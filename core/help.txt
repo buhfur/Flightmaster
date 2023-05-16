@@ -1,0 +1,2 @@
+Usage: flightmaster [options...] <addon name> 
+
