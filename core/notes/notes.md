@@ -14,6 +14,7 @@ and have the user download addons from that selection of addons
 [x] - scrape vanilla addons for all addon links 
 [x] - Scrape legacy-wow.com for all href's with "github.com" in them
 [x] - script to look at file of links and get their github download links 
+[] -
 
 Write script to upload them all to the IPFS node and pin the hashes ?
 
