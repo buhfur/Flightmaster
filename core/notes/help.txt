@@ -1,4 +1,0 @@
-Usage: flightmaster [options...] <addon name> 
--p,	Parse file links & search for ZIP files 
--s,	Only search for ZIP files from a specified link
-
