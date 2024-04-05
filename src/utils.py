@@ -1,14 +1,7 @@
 #!/bin/env python3 
 import os 
-import sys
 import requests
-import urllib.request 
 import json
-
-# Script to install addons for older World of Warcraft Clients 
-# Should be crossplatform between windows and linux 
-# Read the profile.json file to find the install location for addons 
-
 
 
 # Adds new client to profile.json , this should be done after initial setup as there should be at least one client configured 
@@ -41,16 +34,7 @@ def get_addons(client,name):
 
 
 
-def main(): 
-
-    client = '1.12.1'
-    get_addons(client, '') 
-
-    
 
 
 
-
-if __name__ == '__main__':
-    main()
 
