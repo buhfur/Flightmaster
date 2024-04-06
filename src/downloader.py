@@ -1,31 +1,79 @@
-import requests
-import urllib
+import cloudscraper
+import difflib
+from bs4 import BeautifulSoup
+
+# Scrape legacy wow addons website for all downloadable links 
+# client MUST be a string containing either ["vanilla", "turtle", "tbc", "wotlk"]
+
+
+# Custom class so I can make new scrapers 
+class Scraper:
+
+    # returns the list of links 
+    def get(self,url):
+        urls = []
+        reqs = cloudscraper.create_scraper()
+        html = reqs.get(url).content
+        print(f"url: {url}")
+        soup = BeautifulSoup(html,'html.parser')
+        for link in soup.find_all('a'):
+            urls.append(link.get('href'))
+
+        return urls
+
+
+        
+        
+def get_legacy_wow_addons(addon_name, client):
+
+    url = "https://legacy-wow.com/uploads/addons"
+    scraper = Scraper()
+    req = scraper.get(url)
+    found_results = []
+    
+    # search addons in the current directoy 
+    search_by_home = difflib.get_close_matches(addon_name,req)
+    if search_by_home != " ":
+        try:
+            found_results.append(search_by_home[0])
+        except IndexError as e:
+            print("No results found searching by home")
+
+    # search addons using the first letter of it's name 
+    search_by_letter = difflib.get_close_matches(addon_name[0],req) 
+    if search_by_letter != "":
+        try:
+            found_results.append(search_by_letter[0])
+        except IndexError as e:
+            print("No results found searching by letter")
+
+    # search addons using the expansion the addon is associated with 
+
+    search_by_xpac = difflib.get_close_matches(client,req) 
+    if search_by_xpac != "":
+        try:
+            found_results.append(search_by_xpac[0])
+            url = url+"/"+client # concatenate url with client 
+
+            
+
+            
+        except IndexError as e:
+            print("No results found searching by xpac")
+
+
+    #print(f"Found the following results : {found_results}")  
+   
+
+    
 
 
 
-# Script to download addons for multiple clients from different sources
-# This is the toughest part of the backend of the app which is deciding where to source the addons from 
-
-'''
-now I could source it from the legacy-wow.com addons site which allows you to view the whole directory of where it's getting it's addons 
-from , however some of them are inaccurate or unused as some may just have a link to the github page of these addons. 
-
-So it will be challenged on whether to pull the addons from github or the legacy wow addons site. Github would make the most sense
-however searching for them by using some github cli tool is unlikely. There may be other software under the same name as an addon and this 
-would cause issues. 
-
-What might be best is for me to compile an entire list of addons from github and manually add them there. The other option would be to 
-grab the addons from that site. 
-
-Or what I could do is host a server with the addons from legacy-wow.com and add in some of the special addons from github. To do this I could have a database that stores all the items and use that. Since on the flip side most addons from the older clients haven't received updates in years , so there may not be a need to accomadate those addons for older clients. However Vanilla + clients is where the issue begins. With project epoch releasing in the nearby 
-future , people may be looking for addons that are custom to the version of the game they are playing , for instance turtle wow has it's own versions of 
-pfQuest & Atlas loot. Therefore simply having one way references to addons might not be suitable for more custom clients. In this case having links to 
-github would be best as these addons are more likely to receive newer updates. However the older addons for the untouched client may still work on custom
-clients. 
 
 
-I could also host a website for addon developers to submit their addons to in order to have them automatically added to the addon installer 
 
 
-'''
+
+
+
 

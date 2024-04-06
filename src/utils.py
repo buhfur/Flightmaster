@@ -18,7 +18,7 @@ def add_client_to_profile(client,client_path):
 
 
 
-# Installs addons for a selected client with an addon of a specified name
+# Installs addons for a selected client with an addon of a specified name to a specific client version 
 def get_addons(client,name):
     # Parse json file and determine if there's an install location associated 
     with open("profile.json") as f:
