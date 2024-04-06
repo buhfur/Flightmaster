@@ -24,45 +24,25 @@ class Scraper:
 
         
         
+# returns urls to addons to install from legacy-wow.com
 def get_legacy_wow_addons(addon_name, client):
 
-    url = "https://legacy-wow.com/uploads/addons"
-    scraper = Scraper()
-    req = scraper.get(url)
-    found_results = []
-    
-    # search addons in the current directoy 
-    search_by_home = difflib.get_close_matches(addon_name,req)
-    if search_by_home != " ":
-        try:
-            found_results.append(search_by_home[0])
-        except IndexError as e:
-            print("No results found searching by home")
+    url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
 
     # search addons using the first letter of it's name 
-    search_by_letter = difflib.get_close_matches(addon_name[0],req) 
-    if search_by_letter != "":
-        try:
-            found_results.append(search_by_letter[0])
-        except IndexError as e:
-            print("No results found searching by letter")
+    # search by /xpac/first_letter 
+    # for example : /uploads/addons/vanilla/a
 
-    # search addons using the expansion the addon is associated with 
+    sc = Scraper() 
+    res = sc.get(url)
 
-    search_by_xpac = difflib.get_close_matches(client,req) 
-    if search_by_xpac != "":
-        try:
-            found_results.append(search_by_xpac[0])
-            url = url+"/"+client # concatenate url with client 
-
+    try:
             
+        match = difflib.get_close_matches(addon_name, res)
+        return url+"/"+match[0]
 
-            
-        except IndexError as e:
-            print("No results found searching by xpac")
-
-
-    #print(f"Found the following results : {found_results}")  
+    except IndexError as e: 
+        print("No results found for the addon specified")
    
 
     

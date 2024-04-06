@@ -1,5 +1,3 @@
-#!/bin/env python3 
-import os 
 import sys
 import requests
 import urllib.request 
@@ -11,7 +9,8 @@ import downloader
 
 
 if __name__ == '__main__':
-    downloader.get_legacy_wow_addons("AtlasLoot", "vanilla")
+    print(downloader.get_legacy_wow_addons("AtlasLoot", "vanilla"))
+
 
 
 
