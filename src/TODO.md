@@ -108,6 +108,12 @@ I think the main issue is that i'm importing the utils.py module , just gonna st
 
 Alright ! I got it working 
 
+Now I gotta fix why yaml doesn't like adding PosixPaths to the profile, since the code keeps changing the format of the yaml file , i'm just going to use a spare profile.yml  named test\_profile.yml
+
+
+Also adding a run.sh script since i'm tired of typing the whole run command out everytime. 
+
+
 ---
 IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() objects. Remember this if you are having trouble installing the addon to the install location directory 
 ---

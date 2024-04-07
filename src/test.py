@@ -83,20 +83,29 @@ def generate_structure():
 def test_populate_profile(path_map):
 
 
-    with open("profile.yml") as f : 
+    with open("test_profile.yml") as f : 
         profile_data = yaml.safe_load(f)
         data = profile_data['install-directories']
-
         
         data["vanilla"] = path_map["vanilla"]
         data["tbc"] = path_map["tbc"]
         data["wotlk"] = path_map["wotlk"]
         data["turtle"] = path_map["turtle"]
         data["epoch"] = path_map["epoch"]
+
+        if sys.platform.startswith("linux"):
+            # Convert PosixPath to string ?
+            for x in data.keys():
+                logger.debug(f"Keys : {x}")
     
        
         logger.debug(f"{data}")
         logger.debug("Added clients to profile.yml")
+
+'''
+    with open("profile.yml", "w") as f:
+        yaml.dump(profile_data, f, default_flow_style=False)
+'''
 
 
 
