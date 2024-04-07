@@ -7,6 +7,8 @@ import pathlib
 import tempfile
 import shutil
 import pprint
+import utils 
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='logs/log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
@@ -49,23 +51,47 @@ def generate_structure():
 
 
 # Populates the profile.json file using temporary directories, takes map of addon install paths as input
-def test_populate_profile(dir):
+def test_populate_profile(path_map):
+
+    w_data = ""
 
     with open("profile.json") as f : 
-        data = json.load(f)
-        
-        data["vanilla"] = dir["vanilla"]
-        data["tbc"] = dir["tbc"]
-        data["wotlk"] = dir["wotlk"]
-        data["turtle"] = dir["turtle"]
-        data["epoch"] = dir["epoch"]
-    
-        logger.debug(f'{data}')
-        logger.debug("profile.json has been populated")
-    
 
+        logger.debug(f'{type(f)}')
+        data = json.load(f)
+        #w_data = str(data)
+        '''
+        data["vanilla"] = path_map["vanilla"]
+        data["tbc"] = path_map["tbc"]
+        data["wotlk"] = path_map["wotlk"]
+        data["turtle"] = path_map["turtle"]
+        data["epoch"] = path_map["epoch"]
+    
+        '''
+        logger.debug("profile.json has been populated")
+        f.close()
+        logger.debug("f is now closed")
+
+    
+    fp = open("profile.json",'w')
+    json.dump(w_data,fp) # save changes to json file 
+    logger.debug("Changes were saved to file")
+    
+    fp.close()
+
+        
+
+def test_install_addons():
+
+    client="vanilla"
+    url = utils.get_legacy_wow_addons("AtlasLoot",client)
+    utils.install_addon(client,url)
+
+
+    
 
 
 if __name__ == '__main__':
     paths = generate_structure()
     test_populate_profile(paths)
+    test_install_addons()

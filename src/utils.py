@@ -5,8 +5,11 @@ import json
 import cloudscraper
 import difflib
 from bs4 import BeautifulSoup
+import logging
+import urllib 
 
-
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='logs/utils-log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
 # Adds new client to profile.json , this should be done after initial setup as there should be at least one client configured 
 def add_client_to_profile(client,client_path):
@@ -16,8 +19,8 @@ def add_client_to_profile(client,client_path):
         data[client] = client_path
         if os.path.exists(client_path):
             data[client] = client_path
-            print(f'updated path for {client} to {client_path}')
-        else: print("Could not add new path for client, please double check the path info")
+            logger.debug(f'updated path for {client} to {client_path}')
+        else: logger.debug("Could not add new path for client, please double check the path info")
 
 
 
@@ -27,45 +30,52 @@ def install_addon(client,url):
     # Parse json file and determine if there's an install location associated 
 
     with open("profile.json") as f:
-        data = json.load(f)
+        data = json.loads(f)
         filename = url.rsplit('/', 1)[-1]
         install_path = os.path.join(data[client], filename)
-        print(install_path)
-        if os.path.exists(data[client]): 
+        logger.debug(f"{install_path}")
+        if os.path.exists(data[client]): # checks to see if the directory in the profile exists 
             # TODO : Install addon from url
+            urllib.request.urlretrieve(url)
+
+
+
+
+            
 
                 
 
 # Takes a client path and the client version , adds path to profile.json
 def add_client_to_profile(client_version ,client_path):
-    
+
     with open("profile.json") as f:
         data = json.load(f)
-        if os.path.exists(data[client]): 
+        if os.path.exists(data[client_version]): 
             # add client
-            print("adding client")
+            logger.debug("adding client")
         else:
 
-            print("can't add client , path no valid")
+            logger.debug("can't add client , path not valid")
 
 
 
 
 
+# returns the list of links given a URL 
 class Scraper:
-    # returns the list of links given a URL 
+
     def get(self,url):
         urls = []
         reqs = cloudscraper.create_scraper()
         html = reqs.get(url).content
-        print(f"url: {url}")
+        logger.debug(f"url: {url}")
         soup = BeautifulSoup(html,'html.parser')
         for link in soup.find_all('a'):
             urls.append(link.get('href'))
 
         return urls
 
-        
+
 # ex.) get_legacy_wow_addons("AtlasLoot", "vanilla")
 def get_legacy_wow_addons(addon_name, client):
 
@@ -78,7 +88,7 @@ def get_legacy_wow_addons(addon_name, client):
         return url+"/"+match[0] # returns URL of addon to install 
 
     except IndexError as e: 
-        print("No results found for the addon specified")
-   
+        logger.debug("No results found for the addon specified")
+
 
 
