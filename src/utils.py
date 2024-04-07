@@ -7,10 +7,6 @@ import difflib
 from bs4 import BeautifulSoup
 import logging
 import urllib 
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='logs/utils-log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
-
 # Adds new client to profile.json , this should be done after initial setup as there should be at least one client configured 
 def add_client_to_profile(client,client_path):
     # add the client path to the profile.json file
@@ -24,27 +20,9 @@ def add_client_to_profile(client,client_path):
 
 
 
-# Takes client version and url for addon to install
-# client is a string = ["vanilla","turtle", "epoch", "tbc","wotlk"]
-def install_addon(client,url):
-    # Parse json file and determine if there's an install location associated 
-
-    with open("profile.json") as f:
-        data = json.loads(f)
-        filename = url.rsplit('/', 1)[-1]
-        install_path = os.path.join(data[client], filename)
-        logger.debug(f"{install_path}")
-        if os.path.exists(data[client]): # checks to see if the directory in the profile exists 
-            # TODO : Install addon from url
-            urllib.request.urlretrieve(url)
-
-
-
-
-            
-
                 
 
+'''
 # Takes a client path and the client version , adds path to profile.json
 def add_client_to_profile(client_version ,client_path):
 
@@ -57,7 +35,32 @@ def add_client_to_profile(client_version ,client_path):
 
             logger.debug("can't add client , path not valid")
 
+'''
 
+
+# Takes client version and url for addon to install
+# client is a string = ["vanilla","turtle", "epoch", "tbc","wotlk"]
+def install_addon(client,url):
+    # Parse json file and determine if there's an install location associated 
+
+    logger.debug(f"install_addon({client}, {url})")
+    with open("profile.json") as f:
+        data = json.load(f)
+        logger.debug(f'{data}')
+        filename = url.rsplit('/', 1)[-1]
+        '''
+        install_path = os.path.join(data[client], filename)
+        logger.debug(f"{install_path}")
+        if os.path.exists(data[client]): # checks to see if the directory in the profile exists 
+            # TODO : Install addon from url
+            urllib.request.urlretrieve(url)
+
+        '''
+        logger.debug(f"output of data[client]: {data} ")
+
+
+
+            
 
 
 

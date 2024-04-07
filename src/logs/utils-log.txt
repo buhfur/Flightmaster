@@ -4,12 +4,4 @@ DEBUG:__main__:path: /tmp/addons/tbc/Interface/AddOns was created
 DEBUG:__main__:path: /tmp/addons/wotlk/Interface/AddOns was created 
 DEBUG:__main__:path: /tmp/addons/turtle/Interface/AddOns was created 
 DEBUG:__main__:path: /tmp/addons/epoch/Interface/AddOns was created 
-DEBUG:__main__:<class '_io.TextIOWrapper'>
-DEBUG:__main__:profile.json has been populated
-DEBUG:__main__:f is now closed
-DEBUG:__main__:Changes were saved to file
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a HTTP/1.1" 301 None
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a/ HTTP/1.1" 200 None
-DEBUG:utils:url: https://legacy-wow.com/uploads/addons/vanilla/a
-DEBUG:charset_normalizer:Encoding detection: ascii is most likely the one.
+DEBUG:__main__:opened and closed profile.yml

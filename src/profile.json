@@ -1,9 +1,27 @@
 {
 
-        "vanilla": "",
-        "tbc": "",
-        "wotlk": "",
-        "turtle": "",
-        "epoch": ""
+        "client-addon-install-directories":[ 
 
+        "vanilla": {
+            "install-dir": ""
+            },
+
+        "tbc": {
+            "install-dir": ""
+            },
+
+        "wotlk": {
+            "install-dir": ""
+            },
+
+        "turtle": {
+            "install-dir": ""
+            },
+
+
+        "epoch": {
+            "install-dir": ""
+            }
+
+        ]
 }

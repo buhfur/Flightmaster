@@ -13,7 +13,7 @@
 # [x/] -  Sourcing the addons 
 
 
-*This is the toughest part of the backend of the app which is deciding where to source the addons from *
+**This is the toughest part of the backend of the app which is deciding where to source the addons from**
 
 Now I could source it from the legacy-wow.com addons site which allows you to view the whole directory of where it's getting it's addons 
 from , however some of them are inaccurate or unused as some may just have a link to the github page of these addons. 
@@ -70,9 +70,8 @@ or
 
 > /home/something/wow/Interface/AddOns 
 
-
-
 # [ ] - FEATURE IDEA ( OPTIONAL ) Auto scan for private server clients 
+
 
 
 - implement a function in the utils.py to auto detect client versions on windows and linux systems
@@ -80,4 +79,39 @@ or
 
 # [ ] - FEATURE IDEA ( OPTIONAL ) Change directory name to match the filename of the \*.toc 
 
-Adding this would reduce the headache of having to change the folder name for some addons. World of Warcraft addons require that the parent foldername be identical to the filename of the *.toc file , which describes basic information about the addon
+Adding this would reduce the headache of having to change the folder name for some addons. World of Warcraft addons require that the parent foldername be identical to the filename of the \*.toc file , which describes basic information about the addon
+
+# [ ] - Add clients to json profile 
+
+Currently , i'm having an issue with an error in the test.py script. For some reason the json file is not saving the changes I make in the test script when the profile is populated. I feel like this issue is due to my lack of understanding of what data i'm trying to save and the methods to do so in the json module. Therefore i'm gonnna take a bit of time and use this oppertunity to learn a little more about the json module. Therefore toy.py will be the script i'm using to play around  
+
+
+For some reason , when using json.dumps(s) in utils.py in the install_addon() function , the object returned from load() is a type string
+
+I know I should use dumps() as i'm trying to get a python object deserialized. 
+
+Note : I'm half tempted to just use yaml if I can't figure out this json shit 
+Note : Could switch to yaml OR see if python can parse a \*.conf file
+
+Note : now for some reason my logger module isn't producing a log file when for the test.py module when it was it was doing so previously....
+
+I wonder if it's cause I have two loggers running , one in utils.py and one in test.py
+
+I commented out the logger lines in utils.py and now the log in test.py is now working
+
+**To fix this**
+
+Just change logging.getLogger(__name__) to logging.getLogger("something") 
+
+I think the main issue is that i'm importing the utils.py module , just gonna stick with 1 log file from now on using the logger in the utils.py script
+
+
+Alright ! I got it working 
+
+---
+IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() objects. Remember this if you are having trouble installing the addon to the install location directory 
+---
+
+
+
+
