@@ -1,0 +1,7 @@
+DEBUG:__main__:path of vanilla : /tmp/addons/vanilla/Interface/AddOns
+DEBUG:__main__:path: /tmp/addons/vanilla/Interface/AddOns was created 
+DEBUG:__main__:path: /tmp/addons/tbc/Interface/AddOns was created 
+DEBUG:__main__:path: /tmp/addons/wotlk/Interface/AddOns was created 
+DEBUG:__main__:path: /tmp/addons/turtle/Interface/AddOns was created 
+DEBUG:__main__:path: /tmp/addons/epoch/Interface/AddOns was created 
+DEBUG:__main__:{'vanilla': PosixPath('/tmp/addons/vanilla/Interface/AddOns'), 'tbc': PosixPath('/tmp/addons/tbc/Interface/AddOns'), 'wotlk': PosixPath('/tmp/addons/wotlk/Interface/AddOns'), 'turtle': PosixPath('/tmp/addons/turtle/Interface/AddOns'), 'epoch': PosixPath('/tmp/addons/epoch/Interface/AddOns')}

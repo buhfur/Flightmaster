@@ -22,18 +22,28 @@ def add_client_to_profile(client,client_path):
 # client is a string = ["vanilla","turtle", "epoch", "tbc","wotlk"]
 def install_addon(client,url):
     # Parse json file and determine if there's an install location associated 
+
     with open("profile.json") as f:
         data = json.load(f)
-        if not os.path.exists(data[client]): 
-            print("NO path for selected client, please configure a path for this client ")
+        filename = url.rsplit('/', 1)[-1]
+        install_path = os.path.join(data[client], filename)
+        print(install_path)
+        if os.path.exists(data[client]): 
+            # TODO : Install addon from url
 
+                
+
+# Takes a client path and the client version , adds path to profile.json
+def add_client_to_profile(client_version ,client_path):
+    
+    with open("profile.json") as f:
+        data = json.load(f)
+        if os.path.exists(data[client]): 
+            # add client
+            print("adding client")
         else:
-            print(f"path for {client} has been found at {data[client]}")
 
-
-
-
-
+            print("can't add client , path no valid")
 
 
 

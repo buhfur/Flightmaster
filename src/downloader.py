@@ -37,7 +37,6 @@ def get_legacy_wow_addons(addon_name, client):
     res = sc.get(url)
 
     try:
-            
         match = difflib.get_close_matches(addon_name, res)
         return url+"/"+match[0]
 
