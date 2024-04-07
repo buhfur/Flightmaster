@@ -1,0 +1,6 @@
+venv
+.utils.py.swp
+.main.py.swp
+.profile.json.swp
+.TODO.md.swp
+.downloader.py.swp
