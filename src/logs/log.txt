@@ -4,10 +4,11 @@ DEBUG:__main__:path: /tmp/addons/tbc/Interface/AddOns was created
 DEBUG:__main__:path: /tmp/addons/wotlk/Interface/AddOns was created 
 DEBUG:__main__:path: /tmp/addons/turtle/Interface/AddOns was created 
 DEBUG:__main__:path: /tmp/addons/epoch/Interface/AddOns was created 
-DEBUG:__main__:Keys : epoch
-DEBUG:__main__:Keys : tbc
-DEBUG:__main__:Keys : turtle
-DEBUG:__main__:Keys : vanilla
-DEBUG:__main__:Keys : wotlk
-DEBUG:__main__:{'epoch': PosixPath('/tmp/addons/epoch/Interface/AddOns'), 'tbc': PosixPath('/tmp/addons/tbc/Interface/AddOns'), 'turtle': PosixPath('/tmp/addons/turtle/Interface/AddOns'), 'vanilla': PosixPath('/tmp/addons/vanilla/Interface/AddOns'), 'wotlk': PosixPath('/tmp/addons/wotlk/Interface/AddOns')}
+DEBUG:__main__:Keys : /tmp/addons/epoch/Interface/AddOns
+DEBUG:__main__:Keys : /tmp/addons/tbc/Interface/AddOns
+DEBUG:__main__:Keys : /tmp/addons/turtle/Interface/AddOns
+DEBUG:__main__:Keys : /tmp/addons/vanilla/Interface/AddOns
+DEBUG:__main__:Keys : /tmp/addons/wotlk/Interface/AddOns
+DEBUG:__main__:{'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/addons/vanilla/Interface/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}
 DEBUG:__main__:Added clients to profile.yml
+DEBUG:__main__:Saved changes to profile.yml

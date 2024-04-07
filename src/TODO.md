@@ -113,6 +113,7 @@ Now I gotta fix why yaml doesn't like adding PosixPaths to the profile, since th
 
 Also adding a run.sh script since i'm tired of typing the whole run command out everytime. 
 
+Finally got it working , nothing was wrong with the yaml , just needed to convert the paths from PosixPath objects to strings and now the file is being wrote to just fine. 
 
 ---
 IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() objects. Remember this if you are having trouble installing the addon to the install location directory 
