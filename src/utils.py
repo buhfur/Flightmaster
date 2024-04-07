@@ -2,6 +2,10 @@
 import os 
 import requests
 import json
+import cloudscraper
+import difflib
+from bs4 import BeautifulSoup
+
 
 
 # Adds new client to profile.json , this should be done after initial setup as there should be at least one client configured 
@@ -13,8 +17,7 @@ def add_client_to_profile(client,client_path):
         if os.path.exists(client_path):
             data[client] = client_path
             print(f'updated path for {client} to {client_path}')
-        else:
-            print("Could not add new path for client, please double check the path info")
+        else: print("Could not add new path for client, please double check the path info")
 
 
 
@@ -47,5 +50,35 @@ def add_client_to_profile(client_version ,client_path):
 
 
 
+
+
+class Scraper:
+    # returns the list of links given a URL 
+    def get(self,url):
+        urls = []
+        reqs = cloudscraper.create_scraper()
+        html = reqs.get(url).content
+        print(f"url: {url}")
+        soup = BeautifulSoup(html,'html.parser')
+        for link in soup.find_all('a'):
+            urls.append(link.get('href'))
+
+        return urls
+
+        
+# ex.) get_legacy_wow_addons("AtlasLoot", "vanilla")
+def get_legacy_wow_addons(addon_name, client):
+
+    url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
+    sc = Scraper() 
+    res = sc.get(url)
+
+    try:
+        match = difflib.get_close_matches(addon_name, res)
+        return url+"/"+match[0] # returns URL of addon to install 
+
+    except IndexError as e: 
+        print("No results found for the addon specified")
+   
 
 

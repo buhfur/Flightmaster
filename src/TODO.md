@@ -2,7 +2,15 @@
 # TODO markdown document of what needs to be implemented 
 
 
-# Sourcing the addons 
+# Basic app flow 
+
+1. add clients to your profile
+2. search for addon 
+3. install/remove addons 
+
+
+
+# [x/] -  Sourcing the addons 
 
 
 *This is the toughest part of the backend of the app which is deciding where to source the addons from *
@@ -33,14 +41,13 @@ I didn't think of this either , but I could also source the addons from newer ad
 script to do this real quick. 
 
 
-
 Here I will list a few approaches on where to get the addon install links from 
 
 1. Scraping other sites that have addons listed, compiling a list or urls which the client will use to source the addons from. 
 2. Manually add links from github of popular addons,  which would work but this is very inefficient
 
 
-# Trying option 1 : 
+## Trying option 1 : 
 
 So far i've been able to get a list of all the addons on the adddons page on the legacy-wow.com website, the only tricks is that it's not too organized
 addons are organized by name AND expansions,  therefore there may be some duplicates. Oh , and in addtion they are organized by first letter of their name too. So I can check just the addons page which WOULD work for classic as for some reason the classic addons are on the front page. However for this , I may need to search either in the alphabetically organized addons or the expansion they are associated with. The only problem is that some are missing from the alpha organized and the expansion. It flips, So I may just try to search both and hope it spits out the correct result. 
@@ -57,11 +64,20 @@ Here i'm making a test script to automate some of the testing. For example I don
 
 All addons are always stored in 
 
-C:\something\wow\Interface\AddOns
+> C:\something\wow\Interface\AddOns
 
 or 
 
-/home/something/wow/Interface/AddOns 
+> /home/something/wow/Interface/AddOns 
 
 
-However , I would like to be able to test this on windows as well when I need to move over to that platform to finalize the compatibility changes. Therefore I would like to keep this cross-platform. Therfore no shell commands to generate the directory structure using shell commands. 
+
+# [ ] - FEATURE IDEA ( OPTIONAL ) Auto scan for private server clients 
+
+
+- implement a function in the utils.py to auto detect client versions on windows and linux systems
+
+
+# [ ] - FEATURE IDEA ( OPTIONAL ) Change directory name to match the filename of the \*.toc 
+
+Adding this would reduce the headache of having to change the folder name for some addons. World of Warcraft addons require that the parent foldername be identical to the filename of the *.toc file , which describes basic information about the addon

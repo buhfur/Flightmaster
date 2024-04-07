@@ -8,15 +8,12 @@ import tempfile
 import shutil
 import pprint
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='logging/log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(filename='logs/log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
 
 # generates imitation file structure and returns map of paths and the xpac associated
 def generate_structure():
     # temporary directories test/{vanilla/ , turtle/, epoch/, tbc/, wotlk/}
-
-    # also just playing around with  python3 os module here 
-
     # create directories in the temp windows directory
     parent_dir = os.path.join(tempfile.gettempdir(),"addons")
 
