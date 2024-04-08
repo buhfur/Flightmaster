@@ -45,23 +45,37 @@ class Scraper:
         with open(filename, 'wb') as f:
             for chunk in r.iter_content(chunk_size=1024):
                 f.write(chunk)
-                logging.debug(f"Installed ZIP file to : {filename}")
+        logging.debug(f"Installed ZIP file to : {filename}")
 
 
 
 
 #TODO : ( OPTIONAL ) If the *.toc file and the folder of the addon don't match , change them so.
 
-'''Takes path of zipfile , unzips the folder and removes the *.zip file'''
+'''Takes path of zipfile , unzips the folder and removes the *.zip file
+
+INPUT : addon_zip_path <str> 
+'''
 def unzip_addon(addon_zip_path):
-    n_path = pathlib.PurePath(addon_zip_path)
-    logger.debug(type(n_path))
+    zf = zipfile.ZipFile(addon_zip_path)
+
+    with zipfile.ZipFile(addon_zip_path, 'r') as zip_ref:
+        install_directory =  os.path.dirname(addon_zip_path)
+        zip_ref.extractall(install_directory)
+        logger.debug(f"Unzipped {addon_zip_path} to {install_directory} ")
 
 
 
 
 
-''' Takes client version and url for addon to install , returns path where addon was installed.Installs zip file url references to the directory where the clients addon directory is located , or as shown in the profile.yml'''
+
+''' Takes client version and url for addon to install , returns path where addon was installed.Installs zip file url references to the directory where the clients addon directory is located , or as shown in the profile.yml
+
+INPUT : client <str> , url <str>
+OUTPUT : install_filename <list>
+'''
+
+
 def install_addon(client,url):
 
     # Scraper instance for retrieving the zip file from the url given

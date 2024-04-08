@@ -88,8 +88,7 @@ def test_install_addons():
 
 def test_get_legacy_addons():
     url = utils.get_legacy_wow_addons("AtlasLoot","vanilla")
-    req = requests.get(url, stream=True)
-    logger.debug(f'STATUS : {req.status_code}')
+
 
     
 def main():
@@ -97,6 +96,7 @@ def main():
     test_populate_profile(paths)
     test_get_legacy_addons()
     zip_path = test_install_addons()
+    logger.debug(f"Returned addon install path: {os.path.dirname(zip_path)}")
     utils.unzip_addon(zip_path)
 
 
