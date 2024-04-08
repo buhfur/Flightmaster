@@ -12,3 +12,6 @@ DEBUG:__main__:Keys : /tmp/addons/wotlk/Interface/AddOns
 DEBUG:__main__:{'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/addons/vanilla/Interface/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}
 DEBUG:__main__:Added clients to profile.yml
 DEBUG:__main__:Saved changes to profile.yml
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
+DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a/ HTTP/1.1" 200 None

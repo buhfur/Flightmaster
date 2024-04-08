@@ -1,62 +1,60 @@
-#!/bin/env python3 
-import os 
-import requests
 import json
-import cloudscraper
-import difflib
-from bs4 import BeautifulSoup
+import os
+import sys
+import pathlib
+import tempfile
+import shutil
+import pprint
+import yaml
 import logging
-import urllib 
-# Adds new client to profile.json , this should be done after initial setup as there should be at least one client configured 
-def add_client_to_profile(client,client_path):
-    # add the client path to the profile.json file
-    with open("profile.json") as f:
-        data = json.load(f)
-        data[client] = client_path
-        if os.path.exists(client_path):
-            data[client] = client_path
-            logger.debug(f'updated path for {client} to {client_path}')
-        else: logger.debug("Could not add new path for client, please double check the path info")
+import utils 
+import cloudscraper
+import requests
+from bs4 import BeautifulSoup
+import difflib
 
-
-
+# backend for the GUI 
                 
 
-'''
-# Takes a client path and the client version , adds path to profile.json
-def add_client_to_profile(client_version ,client_path):
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='logs/utils-log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
-    with open("profile.json") as f:
-        data = json.load(f)
-        if os.path.exists(data[client_version]): 
-            # add client
-            logger.debug("adding client")
-        else:
-
-            logger.debug("can't add client , path not valid")
-
-'''
 
 
 # Takes client version and url for addon to install
-# client is a string = ["vanilla","turtle", "epoch", "tbc","wotlk"]
 def install_addon(client,url):
-    # Parse json file and determine if there's an install location associated 
 
+    # Parse yml file and determine if there's an install location associated 
     logger.debug(f"install_addon({client}, {url})")
-    with open("profile.json") as f:
-        data = json.load(f)
-        logger.debug(f'{data}')
+    with open("profile.yml") as f:
+        data = yaml.safe_load(f)
+        addon_dir = data["install-directories"]
+        logger.debug(f'addon_dir[client] : {addon_dir[client]}')
         filename = url.rsplit('/', 1)[-1]
-        '''
-        install_path = os.path.join(data[client], filename)
+        logger.debug(f'name of addon to be installed : {filename}')
+        
+        install_path = os.path.join(addon_dir[client], filename)
         logger.debug(f"{install_path}")
-        if os.path.exists(data[client]): # checks to see if the directory in the profile exists 
+        # Checks if the addon_dir[client] directory string is a real path
+        
+        if os.path.exists(addon_dir[client]): 
             # TODO : Install addon from url
-            urllib.request.urlretrieve(url)
+            
+            install_filename = os.path.join(addon_dir[client], filename)
+            logger.debug(f"install_filename : {install_filename}")
+            with open(install_filename, "wb") as f: 
 
-        '''
-        logger.debug(f"output of data[client]: {data} ")
+                headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0.'}
+
+                res = requests.get(url, headers=headers)
+                logger.debug(f"retrieving : {url}\ninstalling as {install_filename} ")
+                f.write(res.content)
+            logger.debug("Downloading : {url} ")
+
+
+            # Verify addon was actually installed 
+            if os.path.isfile(install_filename):
+                logger.debug(f"Addon successfully installed to : {install_filename}")
 
 
 

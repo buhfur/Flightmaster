@@ -15,33 +15,6 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(filename='logs/log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
 
-
-# json object that represents the schema for the profile 
-
-'''
-profile_obj = {
-
-
-        "client-addon-install-directories":[ 
-        "vanilla": {
-            "install-dir": ""
-            },
-        "tbc": {
-            "install-dir": ""
-            },
-        "wotlk": {
-            "install-dir": ""
-            },
-        "turtle": {
-            "install-dir": ""
-            },
-        "epoch": {
-            "install-dir": ""
-            }
-
-        ]
-}
-'''
 # generates imitation file structure and returns map of paths and the xpac associated
 def generate_structure():
     # temporary directories test/{vanilla/ , turtle/, epoch/, tbc/, wotlk/}
@@ -71,17 +44,12 @@ def generate_structure():
 
     return path_map 
    
-
-
-
-
     
 
 
 
 # Adds fake client install directories to profile.yml
 def test_populate_profile(path_map):
-
 
     with open("profile.yml") as f : 
         profile_data = yaml.safe_load(f)
@@ -97,7 +65,6 @@ def test_populate_profile(path_map):
                 data["wotlk"] = str(path_map["wotlk"])
                 data["turtle"] = str(path_map["turtle"])
                 data["epoch"] = str(path_map["epoch"])
-    
        
         logger.debug(f"{data}")
         logger.debug("Added clients to profile.yml")
@@ -122,7 +89,7 @@ def test_install_addons():
 def main():
     paths = generate_structure()
     test_populate_profile(paths)
-    #test_install_addons()
+    test_install_addons()
 
 
 if __name__ == '__main__':
