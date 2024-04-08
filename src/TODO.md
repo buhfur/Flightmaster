@@ -125,6 +125,8 @@ IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() ob
 
 Made the function for this already , also want to try changing the folder name to match the \*.toc file so there's no issues post installation
 
+[x] - unzip files 
+[ ] - remove zip archives in addon installation directory 
 
 
 

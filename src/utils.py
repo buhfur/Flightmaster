@@ -64,6 +64,13 @@ def unzip_addon(addon_zip_path):
         zip_ref.extractall(install_directory)
         logger.debug(f"Unzipped {addon_zip_path} to {install_directory} ")
 
+    #remove zip file 
+    try:
+        os.remove(addon_zip_path)
+        logger.debug(f"Successfully removed {addon_zip_path}")
+    except Exception as e :
+        logger.debug(e)
+
 
 
 

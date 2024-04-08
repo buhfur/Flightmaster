@@ -35,3 +35,4 @@ DEBUG:utils:calling sc.get_zip(url)
 DEBUG:utils:Addon successfully installed to : /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip
 DEBUG:__main__:Returned addon install path: /tmp/addons/vanilla/Interface/AddOns
 DEBUG:utils:Unzipped /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip to /tmp/addons/vanilla/Interface/AddOns 
+DEBUG:utils:Successfully removed /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip
