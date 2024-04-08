@@ -9,6 +9,7 @@ import pprint
 import yaml
 import logging
 import utils 
+import requests
 
 
 logger = logging.getLogger(__name__)
@@ -77,19 +78,26 @@ def test_populate_profile(path_map):
 
         
 
-# Test function to install addons to a directory listed in profile.yml
+# Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
 
     client="vanilla"
     url = utils.get_legacy_wow_addons("AtlasLoot",client)
-    utils.install_addon(client,url)
+    return utils.install_addon(client,url)
 
+
+def test_get_legacy_addons():
+    url = utils.get_legacy_wow_addons("AtlasLoot","vanilla")
+    req = requests.get(url, stream=True)
+    logger.debug(f'STATUS : {req.status_code}')
 
     
 def main():
     paths = generate_structure()
     test_populate_profile(paths)
-    test_install_addons()
+    test_get_legacy_addons()
+    zip_path = test_install_addons()
+    utils.unzip_addon(zip_path)
 
 
 if __name__ == '__main__':

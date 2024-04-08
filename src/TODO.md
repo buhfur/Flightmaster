@@ -47,7 +47,7 @@ Here I will list a few approaches on where to get the addon install links from
 2. Manually add links from github of popular addons,  which would work but this is very inefficient
 
 
-## Trying option 1 : 
+**Trying option 1**
 
 So far i've been able to get a list of all the addons on the adddons page on the legacy-wow.com website, the only tricks is that it's not too organized
 addons are organized by name AND expansions,  therefore there may be some duplicates. Oh , and in addtion they are organized by first letter of their name too. So I can check just the addons page which WOULD work for classic as for some reason the classic addons are on the front page. However for this , I may need to search either in the alphabetically organized addons or the expansion they are associated with. The only problem is that some are missing from the alpha organized and the expansion. It flips, So I may just try to search both and hope it spits out the correct result. 
@@ -58,7 +58,7 @@ So far option 1 has been working , i've even made a cleaner solution to search f
 
 
 
-# [ ] -  Make testing python script 
+# [x] -  Make testing python script 
 
 Here i'm making a test script to automate some of the testing. For example I don't want to have to download all wow clients ( just yet ) for simply testing the profile.json file. Therefore i'm making a script which should make some directories that imitate the wow clients filestructure, which for most part, is unchanged for addons. 
 
@@ -81,7 +81,7 @@ or
 
 Adding this would reduce the headache of having to change the folder name for some addons. World of Warcraft addons require that the parent foldername be identical to the filename of the \*.toc file , which describes basic information about the addon
 
-# [ ] - Add clients to json profile 
+# [x] - Add clients to json profile 
 
 Currently , i'm having an issue with an error in the test.py script. For some reason the json file is not saving the changes I make in the test script when the profile is populated. I feel like this issue is due to my lack of understanding of what data i'm trying to save and the methods to do so in the json module. Therefore i'm gonnna take a bit of time and use this oppertunity to learn a little more about the json module. Therefore toy.py will be the script i'm using to play around  
 
@@ -118,6 +118,12 @@ Finally got it working , nothing was wrong with the yaml , just needed to conver
 ---
 IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() objects. Remember this if you are having trouble installing the addon to the install location directory 
 ---
+
+
+
+# [ ] - Function to unzip the installed addons and remove the zip archives
+
+Made the function for this already , also want to try changing the folder name to match the \*.toc file so there's no issues post installation
 
 
 
