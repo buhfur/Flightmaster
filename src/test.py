@@ -11,6 +11,7 @@ import logging
 import requests
 from utils import *
 
+from bs4 import BeautifulSoup
 
 
 # generates imitation file structure and returns map of paths and the xpac associated
@@ -79,8 +80,8 @@ def test_install_addons():
     return install_addon(client,url)
 
 
-def test_get_legacy_addons():
-    url = get_legacy_wow_addons("AtlasLoot","vanilla")
+def test_get_legacy_addons(name):
+    url = get_legacy_wow_addons(name,"vanilla")
 
 
 def test_add_client_to_profile():
@@ -99,6 +100,27 @@ def test_add_client_to_profile():
 def test_reset_profile():
    reset_profile() 
 
+
+
+# Test function to be later implemented in utils.py
+def test_get_addon_desc(addon_name, client):
+
+    url = f'https://legacy-wow.com/{client}-addons/{addon_name}'
+    logger.debug(f"URL HERE :{url}")
+    sc = Scraper()
+    res = sc.get(url)
+
+    soup = BeautifulSoup(res.content, 'html.parser')
+
+    # Prints out data from paragraph tags on the site 
+    for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
+        return x.text
+
+    
+
+
+
+
     
 def main():
     '''
@@ -113,9 +135,8 @@ def main():
     test_add_client_to_profile()
     '''
 
-    paths = generate_structure()
-    test_populate_profile(paths)
-    test_reset_profile()
+    test_get_addon_desc("Bagnon","vanilla")
+
 
 if __name__ == '__main__':
     main()

@@ -41,7 +41,7 @@ class Scraper:
     def __init__(self):
         self.scraper = cloudscraper.create_scraper()
 
-    def get(self,url):
+    def get_addon_links(self,url):
         urls = []
         html = self.scraper.get(url).content
         logger.debug(f"url: {url}")
@@ -58,6 +58,11 @@ class Scraper:
             for chunk in r.iter_content(chunk_size=1024):
                 f.write(chunk)
         logging.debug(f"Installed ZIP file to : {filename}")
+
+    # TODO : rewrite this function to inherit the get 
+    def get(self,url):
+        return self.scraper.get(url)
+
 
 
 ''' 
@@ -172,7 +177,7 @@ def get_legacy_wow_addons(addon_name, client):
     url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
     logger.debug(f"URL HERE :{url}")
     sc = Scraper() 
-    res = sc.get(url)
+    res = sc.get_addon_links(url)
 
 
     try:
@@ -253,3 +258,31 @@ def reset_profile():
         yaml.dump(profile, f, default_flow_style=False)
         logger.debug(f'Reset profile.yml')
         logger.debug(f'{install_directories}')
+
+'''
+
+Description : Function that returns the description listed on the legacy-wow addons page for a specific addon. This function is meant to be use with the GUI when generating UI elements of available addons
+
+Arguments:
+    addon_name : 
+        Type : <class 'str'>
+    client:
+        Type : <class 'str'>
+
+
+Returns : <class 'str'>
+
+'''
+
+def get_addon_desc(addon_name, client):
+
+    url = f'https://legacy-wow.com/{client}-addons/{addon_name}'
+    logger.debug(f"URL HERE :{url}")
+    sc = Scraper()
+    res = sc.get(url)
+
+    soup = BeautifulSoup(res.content, 'html.parser')
+
+    # Prints out data from paragraph tags on the site 
+    for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
+        return x.text

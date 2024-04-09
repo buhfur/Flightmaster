@@ -1,15 +1,4 @@
-DEBUG:utils:path: /tmp/addons/vanilla/Interface/AddOns was created 
-DEBUG:utils:path: /tmp/addons/tbc/Interface/AddOns was created 
-DEBUG:utils:path: /tmp/addons/wotlk/Interface/AddOns was created 
-DEBUG:utils:path: /tmp/addons/turtle/Interface/AddOns was created 
-DEBUG:utils:path: /tmp/addons/epoch/Interface/AddOns was created 
-DEBUG:utils:Keys : /tmp/addons/epoch/Interface/AddOns
-DEBUG:utils:Keys : /tmp/addons/tbc/Interface/AddOns
-DEBUG:utils:Keys : /tmp/addons/turtle/Interface/AddOns
-DEBUG:utils:Keys : /tmp/addons/vanilla/Interface/AddOns
-DEBUG:utils:Keys : /tmp/addons/wotlk/Interface/AddOns
-DEBUG:utils:{'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/addons/vanilla/Interface/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}
-DEBUG:utils:Added clients to profile.yml
-DEBUG:utils:Saved changes to profile.yml
-DEBUG:utils:Reset profile.yml
-DEBUG:utils:{'epoch': '', 'tbc': '', 'turtle': '', 'vanilla': '', 'wotlk': ''}
+DEBUG:utils:URL HERE :https://legacy-wow.com/vanilla-addons/Bagnon
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
+DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /vanilla-addons/Bagnon HTTP/1.1" 301 None
+DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /vanilla-addons/Bagnon/ HTTP/1.1" 200 None

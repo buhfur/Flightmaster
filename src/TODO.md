@@ -130,7 +130,7 @@ Made the function for this already , also want to try changing the folder name t
 
 
 
-# [ ] - add client to profile function in utils.py
+# [x] - add client to profile function in utils.py
 
 In this function I would like to detect whether the user provided the Interface/AddOns directory when attempting to add a client to profile.yml
 
@@ -143,10 +143,53 @@ For the time being , the expected input is the directory where the addons are in
 I'm assuming for the time being that all paths in the profile.yml are Path objects and not strings. 
 
 Paths added to the profil.yml file should be strings.
+
+# [ ] - function to return data about each addon available to be downloaded
+This function is meant to be used with the GUI to generate UI elements of all possible addons to be installed. This is similar to how CurseForge presents you with popular addons to download in the UI.
+
+To do this , I will make a function get_available_addons(url) which takes a url string as input and displays info about the addon. 
+
+- Find URL for addon page using the zipfile install link 
+- Scrape Addon page for description
+- return dictionary of addons name , page url , install url , and description
+- addons are searched by the client they are apart of , for the frontend i'm thinking of a singular tab for each client. Therefore the "vanilla" tab will show all available 1.12.1 addons to install and so forth
+
+For example let's take the bagnon addon: 
+
+**The ZIP link for the addon is:**
+
+`https://legacy-wow/uploads/addons/vnailla/b/Bagnon.zip`
+
+**The addon page for the addon is :**
+
+https://legacy-wow.com/vanilla-addons/bagnon
+
+
+So it's safe to assume that all addon pages are going to use the "https://legacy-wow.com/vanilla-addons/" prefix
+
+
+It looks like the only tag of it's type on the page
+
+The addon description is contained within a \<p\> tag on the page
+
+After checking it looks like the site always uses the  
+
+Schema for searching for url data 
+
+`https://legacy-wow.com/{client}-addons/{addon-name} `
+
+
+# [ ] - (OPTIONAL) rewrite "Scraper" class to directly inherit the cloudscraper class 
+
+requires rewrite of the class
+
+
+
 # [ ] - Documentation goals 
 
 [ ] - refactor variable names to make sense
 [ ] - document each functions expected input and output in utils.py
+
 
 
 
