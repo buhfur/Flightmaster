@@ -234,3 +234,22 @@ def add_client_to_profile(client, client_path):
         logger.debug(f'Successfully added {client_path} to profile.yml')
 
 
+'''
+Description : Clears all directories out of the profile.yml file
+
+'''
+def reset_profile():
+
+    with open('profile.yml') as f:
+
+        profile = yaml.safe_load(f)
+        install_directories = profile['install-directories']
+
+        for x in install_directories.keys():
+            install_directories[x] = ""
+
+    with open('profile.yml', 'w') as f:
+
+        yaml.dump(profile, f, default_flow_style=False)
+        logger.debug(f'Reset profile.yml')
+        logger.debug(f'{install_directories}')

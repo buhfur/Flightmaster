@@ -75,12 +75,12 @@ def test_populate_profile(path_map):
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
     client="vanilla"
-    url = utils.get_legacy_wow_addons("AtlasLoot",client)
-    return utils.install_addon(client,url)
+    url = get_legacy_wow_addons("AtlasLoot",client)
+    return install_addon(client,url)
 
 
 def test_get_legacy_addons():
-    url = utils.get_legacy_wow_addons("AtlasLoot","vanilla")
+    url = get_legacy_wow_addons("AtlasLoot","vanilla")
 
 
 def test_add_client_to_profile():
@@ -96,6 +96,8 @@ def test_add_client_to_profile():
         profile = yaml.safe_load(f)
         logger.debug(f'{profile}')
 
+def test_reset_profile():
+   reset_profile() 
 
     
 def main():
@@ -105,10 +107,16 @@ def main():
     test_get_legacy_addons()
     zip_path = test_install_addons()
     logger.debug(f"Returned addon install path: {os.path.dirname(zip_path)}")
-    utils.unzip_addon(zip_path)
-    '''
+    unzip_addon(zip_path)
+   
 
     test_add_client_to_profile()
+    '''
+
+    paths = generate_structure()
+    test_populate_profile(paths)
+    test_reset_profile()
 
 if __name__ == '__main__':
     main()
+

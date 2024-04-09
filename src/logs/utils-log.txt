@@ -1,4 +1,15 @@
-DEBUG:utils:Client : vanilla is valid !
-DEBUG:utils:Please include the AddOns directory in your path , you can ususally find it in the Interface/ folder where your World of Warcraft client was installed
-DEBUG:utils:Successfully added /tmp/something/AddOns to profile.yml
-DEBUG:utils:{'install-directories': {'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/something/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}}
+DEBUG:utils:path: /tmp/addons/vanilla/Interface/AddOns was created 
+DEBUG:utils:path: /tmp/addons/tbc/Interface/AddOns was created 
+DEBUG:utils:path: /tmp/addons/wotlk/Interface/AddOns was created 
+DEBUG:utils:path: /tmp/addons/turtle/Interface/AddOns was created 
+DEBUG:utils:path: /tmp/addons/epoch/Interface/AddOns was created 
+DEBUG:utils:Keys : /tmp/addons/epoch/Interface/AddOns
+DEBUG:utils:Keys : /tmp/addons/tbc/Interface/AddOns
+DEBUG:utils:Keys : /tmp/addons/turtle/Interface/AddOns
+DEBUG:utils:Keys : /tmp/addons/vanilla/Interface/AddOns
+DEBUG:utils:Keys : /tmp/addons/wotlk/Interface/AddOns
+DEBUG:utils:{'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/addons/vanilla/Interface/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}
+DEBUG:utils:Added clients to profile.yml
+DEBUG:utils:Saved changes to profile.yml
+DEBUG:utils:Reset profile.yml
+DEBUG:utils:{'epoch': '', 'tbc': '', 'turtle': '', 'vanilla': '', 'wotlk': ''}
