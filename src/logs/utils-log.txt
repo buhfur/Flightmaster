@@ -1,38 +1,4 @@
-DEBUG:__main__:path of vanilla : /tmp/addons/vanilla/Interface/AddOns
-DEBUG:__main__:path: /tmp/addons/vanilla/Interface/AddOns was created 
-DEBUG:__main__:path: /tmp/addons/tbc/Interface/AddOns was created 
-DEBUG:__main__:path: /tmp/addons/wotlk/Interface/AddOns was created 
-DEBUG:__main__:path: /tmp/addons/turtle/Interface/AddOns was created 
-DEBUG:__main__:path: /tmp/addons/epoch/Interface/AddOns was created 
-DEBUG:__main__:Keys : /tmp/addons/epoch/Interface/AddOns
-DEBUG:__main__:Keys : /tmp/addons/tbc/Interface/AddOns
-DEBUG:__main__:Keys : /tmp/addons/turtle/Interface/AddOns
-DEBUG:__main__:Keys : /tmp/addons/vanilla/Interface/AddOns
-DEBUG:__main__:Keys : /tmp/addons/wotlk/Interface/AddOns
-DEBUG:__main__:{'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/addons/vanilla/Interface/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}
-DEBUG:__main__:Added clients to profile.yml
-DEBUG:__main__:Saved changes to profile.yml
-DEBUG:utils:URL HERE :https://legacy-wow.com/uploads/addons/vanilla/a
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a HTTP/1.1" 301 None
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a/ HTTP/1.1" 200 None
-DEBUG:utils:url: https://legacy-wow.com/uploads/addons/vanilla/a
-DEBUG:charset_normalizer:Encoding detection: ascii is most likely the one.
-DEBUG:utils:RETURN URL : https://legacy-wow.com/uploads/addons/vanilla/a/AtlasLoot.zip
-DEBUG:utils:URL HERE :https://legacy-wow.com/uploads/addons/vanilla/a
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a HTTP/1.1" 301 None
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a/ HTTP/1.1" 200 None
-DEBUG:utils:url: https://legacy-wow.com/uploads/addons/vanilla/a
-DEBUG:charset_normalizer:Encoding detection: ascii is most likely the one.
-DEBUG:utils:RETURN URL : https://legacy-wow.com/uploads/addons/vanilla/a/AtlasLoot.zip
-DEBUG:utils:install_addon(vanilla, https://legacy-wow.com/uploads/addons/vanilla/a/AtlasLoot.zip)
-DEBUG:utils:AtlasLoot.zip
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /uploads/addons/vanilla/a/AtlasLoot.zip HTTP/1.1" 200 299963
-DEBUG:root:Installed ZIP file to : /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip
-DEBUG:utils:calling sc.get_zip(url)
-DEBUG:utils:Addon successfully installed to : /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip
-DEBUG:__main__:Returned addon install path: /tmp/addons/vanilla/Interface/AddOns
-DEBUG:utils:Unzipped /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip to /tmp/addons/vanilla/Interface/AddOns 
-DEBUG:utils:Successfully removed /tmp/addons/vanilla/Interface/AddOns/AtlasLoot.zip
+DEBUG:utils:Client : vanilla is valid !
+DEBUG:utils:Please include the AddOns directory in your path , you can ususally find it in the Interface/ folder where your World of Warcraft client was installed
+DEBUG:utils:Successfully added /tmp/something/AddOns to profile.yml
+DEBUG:utils:{'install-directories': {'epoch': '/tmp/addons/epoch/Interface/AddOns', 'tbc': '/tmp/addons/tbc/Interface/AddOns', 'turtle': '/tmp/addons/turtle/Interface/AddOns', 'vanilla': '/tmp/something/AddOns', 'wotlk': '/tmp/addons/wotlk/Interface/AddOns'}}

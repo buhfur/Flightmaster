@@ -2,5 +2,5 @@ install-directories:
   epoch: /tmp/addons/epoch/Interface/AddOns
   tbc: /tmp/addons/tbc/Interface/AddOns
   turtle: /tmp/addons/turtle/Interface/AddOns
-  vanilla: /tmp/addons/vanilla/Interface/AddOns
+  vanilla: /tmp/something/AddOns
   wotlk: /tmp/addons/wotlk/Interface/AddOns

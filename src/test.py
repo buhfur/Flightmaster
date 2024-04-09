@@ -8,18 +8,13 @@ import shutil
 import pprint
 import yaml
 import logging
-import utils 
 import requests
+from utils import *
 
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='logs/log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
 
 # generates imitation file structure and returns map of paths and the xpac associated
 def generate_structure():
-    # temporary directories test/{vanilla/ , turtle/, epoch/, tbc/, wotlk/}
-    # create directories in the temp windows directory
     parent_dir = os.path.join(tempfile.gettempdir(),"addons")
 
     v_path = pathlib.Path(f'{parent_dir}/vanilla/Interface/AddOns')
@@ -36,7 +31,6 @@ def generate_structure():
 
     path_map = {"vanilla" : v_path, "tbc": t_path, "wotlk": w_path, "turtle": tu_path, "epoch":ep_path}
 
-    logger.debug(f"path of vanilla : {v_path}")
     for x in path_map.values():
         if not os.path.exists(x):
             logger.debug(f"{x} path wasn't created")
@@ -60,7 +54,7 @@ def test_populate_profile(path_map):
             # Convert PosixPath to string ?
             for x in data.values():
                 logger.debug(f"Keys : {x}")
-                # Convert to Path obj or string?  
+                # Convert paths to strings and add to profile.yml
                 data["vanilla"] = str(path_map["vanilla"])
                 data["tbc"] = str(path_map["tbc"])
                 data["wotlk"] = str(path_map["wotlk"])
@@ -80,7 +74,6 @@ def test_populate_profile(path_map):
 
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
-
     client="vanilla"
     url = utils.get_legacy_wow_addons("AtlasLoot",client)
     return utils.install_addon(client,url)
@@ -90,15 +83,32 @@ def test_get_legacy_addons():
     url = utils.get_legacy_wow_addons("AtlasLoot","vanilla")
 
 
+def test_add_client_to_profile():
+    # Generate test directory 
+
+    t_path = pathlib.Path(f'{tempfile.gettempdir()}/something/AddOns')
+    t_path.mkdir(parents=True, exist_ok=True)
+
+    client = "vanilla"
+    add_client_to_profile(client, str(t_path))
+
+    with open("profile.yml") as f: 
+        profile = yaml.safe_load(f)
+        logger.debug(f'{profile}')
+
+
     
 def main():
+    '''
     paths = generate_structure()
     test_populate_profile(paths)
     test_get_legacy_addons()
     zip_path = test_install_addons()
     logger.debug(f"Returned addon install path: {os.path.dirname(zip_path)}")
     utils.unzip_addon(zip_path)
+    '''
 
+    test_add_client_to_profile()
 
 if __name__ == '__main__':
     main()

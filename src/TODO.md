@@ -56,6 +56,7 @@ addons are organized by name AND expansions,  therefore there may be some duplic
 So far option 1 has been working , i've even made a cleaner solution to search for the addons. Instead , addons are ALWAYS searched using the first letter of the addons name AND the xpac it is asssociated with. This I believe should be 90% accurate of addons to search by.
 
 
+For legacy wow addons , for tbc you might need to use the tbcClient/ directory 
 
 
 # [x] -  Make testing python script 
@@ -72,16 +73,14 @@ or
 
 # [ ] - FEATURE IDEA ( OPTIONAL ) Auto scan for private server clients 
 
+Goal : implement a function in the utils.py to auto detect client versions on windows and linux systems.
 
 
-- implement a function in the utils.py to auto detect client versions on windows and linux systems
-
-
-# [ ] - FEATURE IDEA ( OPTIONAL ) Change directory name to match the filename of the \*.toc 
+# [x] - FEATURE IDEA ( OPTIONAL ) Change directory name to match the filename of the \*.toc 
 
 Adding this would reduce the headache of having to change the folder name for some addons. World of Warcraft addons require that the parent foldername be identical to the filename of the \*.toc file , which describes basic information about the addon
 
-# [x] - Add clients to json profile 
+# [x] - Add clients to json profile test 
 
 Currently , i'm having an issue with an error in the test.py script. For some reason the json file is not saving the changes I make in the test script when the profile is populated. I feel like this issue is due to my lack of understanding of what data i'm trying to save and the methods to do so in the json module. Therefore i'm gonnna take a bit of time and use this oppertunity to learn a little more about the json module. Therefore toy.py will be the script i'm using to play around  
 
@@ -121,12 +120,33 @@ IMPORTANT NOTE : ON linux the paths for the install locations are PosixPath() ob
 
 
 
-# [ ] - Function to unzip the installed addons and remove the zip archives
+# [x] - Function to unzip the installed addons and remove the zip archives
 
 Made the function for this already , also want to try changing the folder name to match the \*.toc file so there's no issues post installation
 
 [x] - unzip files 
-[ ] - remove zip archives in addon installation directory 
+[x] - remove zip archives in addon installation directory 
+[x] - check if directory name matches name of .toc file 
+
+
+
+# [ ] - add client to profile function in utils.py
+
+In this function I would like to detect whether the user provided the Interface/AddOns directory when attempting to add a client to profile.yml
+
+My goal for this is to make the experience as easy as possible for the user , therefore the user should only have to provide the directory where they installed the client, rather than provide the Interface/AddOns directory.j
+
+I'm not sure if it's confusing to allow the option to provide the parent OR the Interface/AddOns directory. The Addons directory would make sense but i'm worried some users might not be aware how addons are installed.
+
+For the time being , the expected input is the directory where the addons are installed , so wow/Interface/AddOns
+
+I'm assuming for the time being that all paths in the profile.yml are Path objects and not strings. 
+
+Paths added to the profil.yml file should be strings.
+# [ ] - Documentation goals 
+
+[ ] - refactor variable names to make sense
+[ ] - document each functions expected input and output in utils.py
 
 
 
