@@ -109,19 +109,33 @@ def test_get_addon_desc(addon_name, client):
     
 
 
+'''
 
+Testing main function , i've also added some cli argument handling to ease the testing process: 
+
+    Arguments : 
+        -n [x] , --name     search for addon [x] on legacy-wow.com
+        -d [x] , --desc     get description of addon from legacy-wow.com
+
+'''
 
     
 def main():
+
+    # Cobled together command line parsing i'm actually doing CLi args through the shell script so this might be redundant 
+
+    
     paths = generate_structure()
     test_populate_profile(paths)
-    test_get_legacy_addons()
+
+    test_get_legacy_addons("Bagnon")
     zip_path = test_install_addons()
     logger.debug(f"Returned addon install path: {os.path.dirname(zip_path)}")
     unzip_addon(zip_path)
    
 
     test_add_client_to_profile()
+   
 
 
 

@@ -222,9 +222,12 @@ def add_client_to_profile(client, client_path):
                 p_path = pathlib.Path(client_path).parent
                 # Detect whether AddOns folder was provided
                 if pathlib.PurePath(p_path).match("AddOns"):
+
                     logger.debug('AddOns directory was provided')
                     data[client] = client_path
+
                 else:
+
                     logger.debug('Please include the AddOns directory in your path , you can ususally find it in the Interface/ folder where your World of Warcraft client was installed')
 
             else:

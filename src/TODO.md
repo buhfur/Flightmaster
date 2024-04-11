@@ -184,6 +184,13 @@ Schema for searching for url data
 requires rewrite of the class
 
 
+# [ ] - GUI time , the frontend of the app 
+
+I'm not entirely certain the app is ready for a user interface , but given how the app now has the functionality of adding users profiles, and installing addons from the legacy-wow.com site to install these addons. I believe the app is now ready for an interface to do so. For the time being of course the interface won't be pretty , all it needs to do right now is work. I will develop the interface for the linux users on my spare VM on my hypervisor and develop the windows portion on my windows distro at home. 
+
+But now comes the greatest question , which UI framework am I gonna use ?  
+
+The only shitty thing is that I now have to switch work environments to the terminal on my spare vm lol
 
 # [ ] - Documentation goals 
 
