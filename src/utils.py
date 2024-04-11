@@ -280,7 +280,6 @@ def get_addon_desc(addon_name, client):
     logger.debug(f"URL HERE :{url}")
     sc = Scraper()
     res = sc.get(url)
-
     soup = BeautifulSoup(res.content, 'html.parser')
 
     # Prints out data from paragraph tags on the site 
