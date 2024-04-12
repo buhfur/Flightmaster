@@ -192,11 +192,21 @@ But now comes the greatest question , which UI framework am I gonna use ?
 
 The only shitty thing is that I now have to switch work environments to the terminal on my spare vm lol
 
+
+
 # [ ] - Documentation goals 
 
 [ ] - refactor variable names to make sense
 [ ] - document each functions expected input and output in utils.py
 
+
+---
+
+# Frontend TODO 
+
+
+[ ] - button that allows you to select the install location for clients 
+[ ] - Populate table with addon name and description and download using button
 
 
 

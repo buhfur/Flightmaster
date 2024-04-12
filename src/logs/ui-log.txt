@@ -1,0 +1,41 @@
+DEBUG:PyQt6.uic.uiparser:toplevel widget is MainWindow
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.properties:setting property windowTitle
+DEBUG:PyQt6.uic.uiparser:push MainWindow MainWindow
+DEBUG:PyQt6.uic.uiparser:push QWidget centralwidget
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.properties:setting property toolTip
+DEBUG:PyQt6.uic.properties:setting property currentIndex
+DEBUG:PyQt6.uic.uiparser:push QTabWidget tabWidget
+DEBUG:PyQt6.uic.uiparser:push QWidget searchAddonsTab
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.properties:setting property text
+DEBUG:PyQt6.uic.uiparser:push QPushButton searchButton
+DEBUG:PyQt6.uic.uiparser:pop widget QPushButton searchButton
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f4175755fc0>
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.uiparser:push QLineEdit searchBar
+DEBUG:PyQt6.uic.uiparser:pop widget QLineEdit searchBar
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f4175755fc0>
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.uiparser:push QTableWidget tableWidget
+DEBUG:PyQt6.uic.uiparser:pop widget QTableWidget tableWidget
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f4175755fc0>
+DEBUG:PyQt6.uic.uiparser:pop widget QWidget searchAddonsTab
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7f4175755f30>
+DEBUG:PyQt6.uic.uiparser:push QWidget myAddonsTab
+DEBUG:PyQt6.uic.uiparser:pop widget QWidget myAddonsTab
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7f4175755f30>
+DEBUG:PyQt6.uic.uiparser:pop widget QTabWidget tabWidget
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f4175755d80>
+DEBUG:PyQt6.uic.uiparser:pop widget QWidget centralwidget
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f417ae05c60>
+DEBUG:PyQt6.uic.properties:setting property geometry
+DEBUG:PyQt6.uic.uiparser:push QMenuBar menubar
+DEBUG:PyQt6.uic.uiparser:pop widget QMenuBar menubar
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f417ae05c60>
+DEBUG:PyQt6.uic.uiparser:push QStatusBar statusbar
+DEBUG:PyQt6.uic.uiparser:pop widget QStatusBar statusbar
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f417ae05c60>
+DEBUG:PyQt6.uic.uiparser:pop widget MainWindow MainWindow
+DEBUG:PyQt6.uic.uiparser:new topwidget None
