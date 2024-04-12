@@ -11,7 +11,6 @@ from utils import *
 
 
 class MainWindow(QtWidgets.QMainWindow):
-
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
@@ -49,20 +48,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # pull what radio button was selected
         if sys.platform.startswith("linux"):
+            print("linux detected")
             fs = self.fileDialog.getExistingDirectory(self, "/home/")
 
         elif sys.platform.startswith("win32"):
+            print("windows detected")
             fs = self.fileDialog.getExistingDirectory(self, "C:\\Users\\", QFileDialog.DontUseNativeDialog )
 
 
-        add_client_to_profile(self.add_client_xpac.lower(), fs[0])
+        add_client_to_profile(self.add_client_xpac.lower(), fs)
         # Gotta make sure the file path is a string 
-        print(self.add_client_xpac.lower(), fs[0])
-        logger.debug(f'fs[0] : {fs[0]}')
-        #print("Added client to profile")
+
+        #All this does is pretty print the profile.yml
         utils.p_profile()
-        
-        
+
+
 
     # Handler for the "Install Addons" tab buttons 
     def search_radio_buttons(self):

@@ -224,8 +224,9 @@ def add_client_to_profile(client, client_path):
 
                 logger.debug(f'client path : { client_path} ')
                 p_path = pathlib.Path(client_path).parent
+                logger.debug(p_path)
                 # Detect whether AddOns folder was provided
-                if pathlib.PurePath(p_path).match("AddOns"):
+                if pathlib.PurePath(p_path).match("Interface"):
 
                     logger.debug('AddOns directory was provided')
                     data[client] = client_path
@@ -244,6 +245,7 @@ def add_client_to_profile(client, client_path):
     with open("profile.yml", "w") as f:
         yaml.dump(profile, f, default_flow_style=False)
         logger.debug(f'Successfully added {client_path} to profile.yml')
+
 
 
 '''

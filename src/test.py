@@ -117,4 +117,6 @@ Testing main function , i've also added some cli argument handling to ease the t
 
 '''
 
+generate_structure()
    
+
