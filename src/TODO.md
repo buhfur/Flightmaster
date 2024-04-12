@@ -193,6 +193,11 @@ But now comes the greatest question , which UI framework am I gonna use ?
 The only shitty thing is that I now have to switch work environments to the terminal on my spare vm lol
 
 
+Ok  so far i've got the base layout setup and ready to go , now I just need
+to piece the logic together and interweave it with the existing codebase.  
+
+First objective is to get the "Adding clients" section of the ui done and over with. For this all that needs to happen is I should be able to select one of the radio buttons and a folder selection prompt should appear. A message should specifiy that the directory HAS to be the Interface AddOns folder of the client or else addons are going to installed in a location that might get lost to the user and never be seen again....Therefore I would like to avoid this. Alot of this frontend work has me thinking entirely differently. Writing the code for this project so far has been a blast from the past for sure, yet now I actually need to be thinking of how the user is actually going to use my program. It's very new to me and i'm sure I have alot to learn. However for the time being I feel like a monkey hacking together UI elements to make something at least 10% usable 
+
 
 # [ ] - Documentation goals 
 
@@ -205,6 +210,7 @@ The only shitty thing is that I now have to switch work environments to the term
 # Frontend TODO 
 
 
+[ ] - find out why fs[0] client path in add_client_button and add_client_to profile, for some reason the path supplied is always a slash "/" and I have no idea why. Try to figure this out when you're sober.
 [ ] - button that allows you to select the install location for clients 
 [ ] - Populate table with addon name and description and download using button
 

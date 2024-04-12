@@ -97,8 +97,6 @@ def test_add_client_to_profile():
         profile = yaml.safe_load(f)
         logger.debug(f'{profile}')
 
-def test_reset_profile():
-   reset_profile() 
 
 
 
@@ -119,27 +117,4 @@ Testing main function , i've also added some cli argument handling to ease the t
 
 '''
 
-    
-def main():
-
-    # Cobled together command line parsing i'm actually doing CLi args through the shell script so this might be redundant 
-
-    
-    paths = generate_structure()
-    test_populate_profile(paths)
-
-    test_get_legacy_addons("Bagnon")
-    zip_path = test_install_addons()
-    logger.debug(f"Returned addon install path: {os.path.dirname(zip_path)}")
-    unzip_addon(zip_path)
    
-
-    test_add_client_to_profile()
-   
-
-
-
-
-if __name__ == '__main__':
-    main()
-

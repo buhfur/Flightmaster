@@ -13,6 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 import difflib
 import zipfile
+import pyaml
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='logs/utils-log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
@@ -204,7 +205,9 @@ Arguments :
         Type : <class 'str'>
 
         Description : String that represents the clients installation directory, note that this is NOT the location of the addons, just the client directory itself
+Returns : 
 
+    int : 0 or 1 , 1 if completed successfully
 
 '''
 def add_client_to_profile(client, client_path):
@@ -219,6 +222,7 @@ def add_client_to_profile(client, client_path):
             logger.debug(f'Client : {client} is valid !')
             if os.path.exists(client_path):
 
+                logger.debug(f'client path : { client_path} ')
                 p_path = pathlib.Path(client_path).parent
                 # Detect whether AddOns folder was provided
                 if pathlib.PurePath(p_path).match("AddOns"):
@@ -228,13 +232,13 @@ def add_client_to_profile(client, client_path):
 
                 else:
 
+                    logger.debug(f'p_path: {p_path}')
                     logger.debug('Please include the AddOns directory in your path , you can ususally find it in the Interface/ folder where your World of Warcraft client was installed')
 
             else:
                 logger.debug(f'directory {client_path} doesn\'t exist')
         else:
             logger.debug(f'Client : {client} is NOT valid ')
-
 
 
     with open("profile.yml", "w") as f:
@@ -288,3 +292,25 @@ def get_addon_desc(addon_name, client):
     # Prints out data from paragraph tags on the site 
     for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
         return x.text
+
+
+
+'''
+
+Function that pretty prints the contents of the profile.yml file 
+
+Input : 
+    None 
+
+OUTPUT : 
+    <class 'str'>
+
+'''
+
+
+def p_profile():
+    with open('profile.yml') as f:
+        yam = yaml.safe_load(f)
+        print(pyaml.dump(yam))
+
+
