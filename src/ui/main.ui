@@ -21,22 +21,12 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get Addons&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="searchAddonsTab">
        <attribute name="title">
         <string>Install Addons</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>71</y>
-          <width>361</width>
-          <height>421</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLineEdit" name="searchBar">
         <property name="geometry">
          <rect>
@@ -60,7 +50,7 @@
          <string>Search</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>380</x>
@@ -100,6 +90,16 @@
          </item>
         </layout>
        </widget>
+       <widget class="QListWidget" name="listAddonsWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>361</width>
+          <height>361</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="myAddonsTab">
        <attribute name="title">
@@ -118,7 +118,7 @@
          <string>Add Client</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -184,7 +184,7 @@
      <x>0</x>
      <y>0</y>
      <width>806</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

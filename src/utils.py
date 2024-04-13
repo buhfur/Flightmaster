@@ -172,6 +172,10 @@ Arguments:
     client : 
         Type : <class 'str'> 
         Description : String containing the name of the client to install the addon for , currently only : 'vanilla' , 'tbc', 'turtle', 'wotlk', 'epoch' is supported
+
+    Returns : 
+
+        Returns a <class 'str'> with the url of the addon searched
 '''
 def get_legacy_wow_addons(addon_name, client):
 
@@ -179,8 +183,7 @@ def get_legacy_wow_addons(addon_name, client):
     logger.debug(f"URL HERE :{url}")
     sc = Scraper() 
     res = sc.get_addon_links(url)
-
-
+    
     try:
         match = difflib.get_close_matches(addon_name, res)
         logger.debug(f'RETURN URL : {url+"/"+match[0]}')
@@ -279,7 +282,12 @@ Arguments:
         Type : <class 'str'>
 
 
-Returns : <class 'str'>
+Returns: 
+    <class 'tuple'> (text, url) 
+
+    text : Text description of the addon searched 
+    url : url of the image to be used 
+
 
 '''
 
@@ -291,10 +299,21 @@ def get_addon_desc(addon_name, client):
     res = sc.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
 
+    text = ""
+    url = "" # url of picture 
+
     # Prints out data from paragraph tags on the site 
     for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
-        return x.text
+        text = x.text
 
+    # Gets the src url of the picture used 
+    for x in soup.find('div', {'id': 'sidebar-div'}).findAll('a', {'class':'lightbox'}):
+        url = f"{x['href']}"
+
+
+    return (text, url)
+
+    
 
 
 '''

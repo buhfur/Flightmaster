@@ -103,7 +103,7 @@ def test_add_client_to_profile():
 # Test function to be later implemented in utils.py
 def test_get_addon_desc(addon_name, client):
 
-    get_addon_desc(addon_name, client)
+    logger.debug(get_addon_desc(addon_name, client))
     
 
 
@@ -117,6 +117,5 @@ Testing main function , i've also added some cli argument handling to ease the t
 
 '''
 
-generate_structure()
    
-
+test_get_addon_desc('pfquest', 'vanilla')
