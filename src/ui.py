@@ -5,55 +5,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6 import uic
 import logging
 from utils import *
-
-
-'''
-Custom widget for presenting the addons 
-'''
-class AddonWidget(QtWidgets.QWidget):
-
-    def __init__(self, steps=5, *args, **kwargs):
-        super(AddonWidget, self).__init__(*args,**kwargs)
-        self.layout = QtWidgets.QVBoxLayout()
-        self.addon_image_label = QtWidgets.QLabel()
-        self.addon_name_label = QtWidgets.QLabel("Name:")
-        self.addon_name_text = QtWidgets.QLabel("")
-        self.addon_desc_label = QtWidgets.QLabel("Description :")
-        self.addon_desc_text = QtWidgets.QLabel("")
-
-
-        self.client = ""
-        self.install_button = QtWidgets.QPushButton("Install")
-        self.layout.addWidget(self.addon_image_label)
-        self.layout.addWidget(self.addon_name_label)
-        self.layout.addWidget(self.addon_name_text)
-        self.layout.addWidget(self.addon_desc_label)
-        self.layout.addWidget(self.addon_desc_text)
-        self.layout.addWidget(self.install_button)
-
-        self.install_button.clicked.connect(self.install_addon_button)
-        self.setLayout(self.layout)
-
-    # Adds text to labels , url is the url of the photo  called after get_addon_desc() is called 
-    def setup(self, name,client,desc,url):
-        self.addon_name_text.setText(name)
-        self.addon_desc_text.setText(desc)
-        self.addon_image_label.setPixmap(QtGui.QPixmap(url))
-        self.client = client
-
-        
-
-    # Installs the addon to the client in profile.yml
-    def install_addon_button(self):
-       download_url = get_legacy_wow_addons(self.addon_name_text, self.client) 
-       if self.client != "":
-           install_addon(self.client, download_url)
-       else:
-           #TODO: add some popups for both when the download is done or coulden't start
-           logger.debug("Client is not set ! ")
-
-
-
+from addonWidget import AddonWidget
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -91,11 +43,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def search_button(self):
         addon_name = self.searchBar.text()
         addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
-        # Set text of addon labels 
-        search_result_widget = AddonWidget().setup(addon_name,self.search_client_xpac,addon_desc[0], addon_desc[1])
+
+        print(self.addonsTabLayout.itemAt(0).widget() )
+
         
-        # searchView = self.searchAddonsTab.findChildren(QtWidgets.QListView)
-        self.listAddonsWidget.addItem(search_result_widget)
 
 
     # Adds client Interface/Addons path for addon installations 
@@ -124,6 +75,19 @@ class MainWindow(QtWidgets.QMainWindow):
     # Handler for the "Add Clients" tab buttons 
     def add_client_radio_buttons(self):
         self.add_client_xpac = self.sender().text()
+
+
+
+    # test function to see if I can add the elements from AddonWidget to the main window
+    def test_add_to_window(self):
+        self.addon_frame = QtWidgets.QVBoxLayout()
+        self.addon_image_label = QtWidgets.QLabel()
+        self.addon_name_label = QtWidgets.QLabel("Name:")
+        self.addon_name_text = QtWidgets.QLabel("")
+        self.addon_desc_label = QtWidgets.QLabel("Description :")
+        self.addon_desc_text = QtWidgets.QLabel("")
+
+
 
 
 

@@ -17,7 +17,6 @@
 
 Now I could source it from the legacy-wow.com addons site which allows you to view the whole directory of where it's getting it's addons 
 from , however some of them are inaccurate or unused as some may just have a link to the github page of these addons. 
-
 So it will be challenged on whether to pull the addons from github or the legacy wow addons site. Github would make the most sense
 however searching for them by using some github cli tool is unlikely. There may be other software under the same name as an addon and this 
 would cause issues. 

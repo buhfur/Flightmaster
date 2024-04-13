@@ -27,79 +27,53 @@
        <attribute name="title">
         <string>Install Addons</string>
        </attribute>
-       <widget class="QLineEdit" name="searchBar">
-        <property name="geometry">
-         <rect>
-          <x>167</x>
-          <y>40</y>
-          <width>201</width>
-          <height>25</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="searchButton">
-        <property name="geometry">
-         <rect>
-          <x>390</x>
-          <y>460</y>
-          <width>80</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Search</string>
-        </property>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>110</y>
-          <width>111</width>
-          <height>331</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QRadioButton" name="searchVanillaButton">
-           <property name="text">
-            <string>Vanilla</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="searchTbcButton">
-           <property name="text">
-            <string>TBC</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="searchWotlkButton">
-           <property name="text">
-            <string>Wotlk</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="searchCataButton">
-           <property name="text">
-            <string>Cata</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QListWidget" name="listAddonsWidget">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>361</width>
-          <height>361</height>
-         </rect>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="addonsTabLayout">
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="searchBar"/>
+        </item>
+        <item row="1" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QRadioButton" name="searchVanillaButton">
+            <property name="text">
+             <string>Vanilla</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="searchTbcButton">
+            <property name="text">
+             <string>TBC</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="searchWotlkButton">
+            <property name="text">
+             <string>Wotlk</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="searchCataButton">
+            <property name="text">
+             <string>Cata</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="searchButton">
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="searchAddonsLayout"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="myAddonsTab">
        <attribute name="title">
@@ -184,7 +158,7 @@
      <x>0</x>
      <y>0</y>
      <width>806</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
