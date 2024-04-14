@@ -303,14 +303,19 @@ def get_addon_desc(addon_name, client):
     url = "" # url of picture 
 
     # Prints out data from paragraph tags on the site 
-    for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
-        text = x.text
+    try:
 
-    # Gets the src url of the picture used 
-    for x in soup.find('div', {'id': 'sidebar-div'}).findAll('a', {'class':'lightbox'}):
-        url = f"{x['href']}"
+        for x in soup.find('div', {'id': 'content-div'}).findAll('p'):
+            text = x.text
 
+        # Gets the src url of the picture used 
+        for x in soup.find('div', {'id': 'sidebar-div'}).findAll('a', {'class':'lightbox'}):
+            url = f"{x['href']}"
 
+    except AttributeError as e :
+        logger.debug('Addon description is unable to be fetched')
+
+    logger.debug(f'(text,url) : {(text,url)}')
     return (text, url)
 
     

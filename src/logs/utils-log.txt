@@ -7,45 +7,45 @@ DEBUG:PyQt6.uic.properties:setting property pyuicMargins
 DEBUG:PyQt6.uic.uiparser:push QVBoxLayout verticalLayout
 DEBUG:PyQt6.uic.properties:setting property toolTip
 DEBUG:PyQt6.uic.properties:setting property currentIndex
-DEBUG:PyQt6.uic.uiparser:push QTabWidget tabWidget
+DEBUG:PyQt6.uic.uiparser:push QTabWidget tabsWidget
 DEBUG:PyQt6.uic.uiparser:push QWidget searchAddonsTab
 DEBUG:PyQt6.uic.uiparser:push QGridLayout addonsTabLayout
-DEBUG:PyQt6.uic.uiparser:push QLineEdit searchBar
-DEBUG:PyQt6.uic.uiparser:pop widget QLineEdit searchBar
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.properties:setting property text
+DEBUG:PyQt6.uic.uiparser:push QPushButton searchButton
+DEBUG:PyQt6.uic.uiparser:pop widget QPushButton searchButton
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.uiparser:push QVBoxLayout verticalLayout_3
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton searchVanillaButton
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton searchVanillaButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton searchTbcButton
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton searchTbcButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton searchWotlkButton
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton searchWotlkButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton searchCataButton
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton searchCataButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.uiparser:pop layout QVBoxLayout verticalLayout_3
-DEBUG:PyQt6.uic.properties:setting property text
-DEBUG:PyQt6.uic.uiparser:push QPushButton searchButton
-DEBUG:PyQt6.uic.uiparser:pop widget QPushButton searchButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f250>
+DEBUG:PyQt6.uic.uiparser:push QLineEdit searchBar
+DEBUG:PyQt6.uic.uiparser:pop widget QLineEdit searchBar
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37760>
 DEBUG:PyQt6.uic.uiparser:push QVBoxLayout searchAddonsLayout
 DEBUG:PyQt6.uic.uiparser:pop layout QVBoxLayout searchAddonsLayout
 DEBUG:PyQt6.uic.uiparser:pop layout QGridLayout addonsTabLayout
 DEBUG:PyQt6.uic.uiparser:pop widget QWidget searchAddonsTab
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7fb31d53f1c0>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7f86bcf376d0>
 DEBUG:PyQt6.uic.uiparser:push QWidget myAddonsTab
 DEBUG:PyQt6.uic.properties:setting property geometry
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QPushButton addClientButton
 DEBUG:PyQt6.uic.uiparser:pop widget QPushButton addClientButton
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fc70>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce101f0>
 DEBUG:PyQt6.uic.properties:setting property geometry
 DEBUG:PyQt6.uic.uiparser:push QWidget layoutWidget
 DEBUG:PyQt6.uic.properties:setting property pyuicMargins
@@ -53,46 +53,47 @@ DEBUG:PyQt6.uic.uiparser:push QGridLayout gridLayout
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton addClientVanilla
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton addClientVanilla
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fd90>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce10310>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton addClientCata
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton addClientCata
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fd90>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce10310>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton addClientWotlk
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton addClientWotlk
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fd90>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce10310>
 DEBUG:PyQt6.uic.properties:setting property text
 DEBUG:PyQt6.uic.uiparser:push QRadioButton addClientTbc
 DEBUG:PyQt6.uic.uiparser:pop widget QRadioButton addClientTbc
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fd90>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce10310>
 DEBUG:PyQt6.uic.uiparser:pop layout QGridLayout gridLayout
 DEBUG:PyQt6.uic.uiparser:pop widget QWidget layoutWidget
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53fc70>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce101f0>
 DEBUG:PyQt6.uic.uiparser:pop widget QWidget myAddonsTab
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7fb31d53f1c0>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7f86bcf376d0>
 DEBUG:PyQt6.uic.uiparser:push QWidget tab
 DEBUG:PyQt6.uic.properties:setting property geometry
 DEBUG:PyQt6.uic.uiparser:push QTableWidget myAddonsTable
 DEBUG:PyQt6.uic.uiparser:pop widget QTableWidget myAddonsTable
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d410160>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bce10670>
 DEBUG:PyQt6.uic.uiparser:pop widget QWidget tab
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7fb31d53f1c0>
-DEBUG:PyQt6.uic.uiparser:pop widget QTabWidget tabWidget
-DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7fb31d53f010>
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QTabWidget object at 0x7f86bcf376d0>
+DEBUG:PyQt6.uic.uiparser:pop widget QTabWidget tabsWidget
+DEBUG:PyQt6.uic.uiparser:new topwidget <PyQt6.QtWidgets.QWidget object at 0x7f86bcf37490>
 DEBUG:PyQt6.uic.uiparser:pop layout QVBoxLayout verticalLayout
 DEBUG:PyQt6.uic.uiparser:pop widget QWidget centralwidget
-DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7fb31d53ec20>
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f86bcf36ef0>
 DEBUG:PyQt6.uic.properties:setting property geometry
 DEBUG:PyQt6.uic.uiparser:push QMenuBar menubar
 DEBUG:PyQt6.uic.uiparser:pop widget QMenuBar menubar
-DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7fb31d53ec20>
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f86bcf36ef0>
 DEBUG:PyQt6.uic.uiparser:push QStatusBar statusbar
 DEBUG:PyQt6.uic.uiparser:pop widget QStatusBar statusbar
-DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7fb31d53ec20>
+DEBUG:PyQt6.uic.uiparser:new topwidget <__main__.MainWindow object at 0x7f86bcf36ef0>
 DEBUG:PyQt6.uic.uiparser:pop widget MainWindow MainWindow
 DEBUG:PyQt6.uic.uiparser:new topwidget None
-DEBUG:utils:URL HERE :https://legacy-wow.com/Vanilla-addons/AtlasLoot
+DEBUG:utils:URL HERE :https://legacy-wow.com/Vanilla-addons/Gatherer2
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): legacy-wow.com:443
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /Vanilla-addons/AtlasLoot HTTP/1.1" 301 None
-DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /wotlk-addons/atlasloot-enhanced/ HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://legacy-wow.com:443 "GET /Vanilla-addons/Gatherer2 HTTP/1.1" 404 None
+DEBUG:utils:Addon description is unable to be fetched
+DEBUG:utils:(text,url) : ('', '')

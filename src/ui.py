@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6 import uic
@@ -29,7 +30,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.addClientCata.toggled.connect(self.add_client_radio_buttons)
         self.addClientButton.clicked.connect(self.add_client_button)
 
-        self.searchBar.setText("AtlasLoot")
+        self.searchBar.setText("pfQuest")
         # Holds the values of the selected radio buttons on each tab 
         self.add_client_xpac = ""
         self.search_client_xpac = ""
@@ -44,10 +45,14 @@ class MainWindow(QtWidgets.QMainWindow):
         addon_name = self.searchBar.text()
         addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
 
-        print(self.addonsTabLayout.itemAt(0).widget() )
+        self.resultWidget = AddonWidget()
+        self.resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
 
         
 
+        resultWidgetLayout = self.resultWidget.get_layout()
+        #TODO: Find out why searchAddonsLayout can't be referenced
+        self.searchAddonsLayout.addLayout(resultWidgetLayout)
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):

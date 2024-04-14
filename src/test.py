@@ -118,4 +118,4 @@ Testing main function , i've also added some cli argument handling to ease the t
 '''
 
    
-test_get_addon_desc('pfquest', 'vanilla')
+test_get_addon_desc('AtlasLoot', 'vanilla')
