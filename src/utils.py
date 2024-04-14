@@ -294,7 +294,6 @@ Returns:
 def get_addon_desc(addon_name, client):
 
     url = f'https://legacy-wow.com/{client}-addons/{addon_name}'
-    logger.debug(f"URL HERE :{url}")
     sc = Scraper()
     res = sc.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
@@ -315,7 +314,6 @@ def get_addon_desc(addon_name, client):
     except AttributeError as e :
         logger.debug('Addon description is unable to be fetched')
 
-    logger.debug(f'(text,url) : {(text,url)}')
     return (text, url)
 
     

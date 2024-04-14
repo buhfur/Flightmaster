@@ -8,8 +8,9 @@ import urllib
 
 class AddonWidget(QtWidgets.QWidget):
 
-    def __init__(self, steps=5, *args, **kwargs ):
+    def __init__(self, steps=5,layout=None, *args, **kwargs ):
         super(AddonWidget, self).__init__()
+        
         self.AddonWidgetLayout = QtWidgets.QVBoxLayout()
 
         #self.addon_desc_scroll = QtWidgets.QScrollArea()
@@ -18,6 +19,7 @@ class AddonWidget(QtWidgets.QWidget):
         self.addon_name_label = QtWidgets.QLabel("Name:")
         self.addon_desc_label = QtWidgets.QLabel("Description :")
         self.addon_desc_text = QtWidgets.QTextBrowser()
+        
 
 
 
@@ -36,6 +38,10 @@ class AddonWidget(QtWidgets.QWidget):
         #self.AddonWidgetLayout.addWidget(self.addon_desc_scroll)
 
         
+        # Need to add the layout to the widget before it is added to the scrollview
+
+        self.setLayout(self.AddonWidgetLayout)
+        
 
 
 
@@ -50,8 +56,8 @@ class AddonWidget(QtWidgets.QWidget):
             pixmap = QtGui.QPixmap()
             pixmap.loadFromData(url_photo)
             self.addon_image_label.setPixmap(pixmap)
-        except urllib.error.HTTPError as e:
-            print("unable to find photo")
+        except Exception as e:
+            logger.debug("unable to find photo")
 
         self.client = client
 

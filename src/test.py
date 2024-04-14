@@ -118,4 +118,6 @@ Testing main function , i've also added some cli argument handling to ease the t
 '''
 
    
+test_get_addon_desc('Necrosis', 'vanilla')
 test_get_addon_desc('AtlasLoot', 'vanilla')
+test_get_addon_desc('pfQuest', 'vanilla')

@@ -143,7 +143,7 @@ I'm assuming for the time being that all paths in the profile.yml are Path objec
 
 Paths added to the profil.yml file should be strings.
 
-# [ ] - function to return data about each addon available to be downloaded
+# [x] - function to return data about each addon available to be downloaded
 This function is meant to be used with the GUI to generate UI elements of all possible addons to be installed. This is similar to how CurseForge presents you with popular addons to download in the UI.
 
 To do this , I will make a function get_available_addons(url) which takes a url string as input and displays info about the addon. 
@@ -196,6 +196,17 @@ Ok  so far i've got the base layout setup and ready to go , now I just need
 to piece the logic together and interweave it with the existing codebase.  
 
 First objective is to get the "Adding clients" section of the ui done and over with. For this all that needs to happen is I should be able to select one of the radio buttons and a folder selection prompt should appear. A message should specifiy that the directory HAS to be the Interface AddOns folder of the client or else addons are going to installed in a location that might get lost to the user and never be seen again....Therefore I would like to avoid this. Alot of this frontend work has me thinking entirely differently. Writing the code for this project so far has been a blast from the past for sure, yet now I actually need to be thinking of how the user is actually going to use my program. It's very new to me and i'm sure I have alot to learn. However for the time being I feel like a monkey hacking together UI elements to make something at least 10% usable 
+
+
+# [ ] - Small frontend TODO
+
+[ ] - Create dialogs for when user fails to select xpac on searchAddonsTab 
+
+[ ] - Add temporary photo as a placeholder for addons where the picture is unavailable.
+
+[ ] - Make search bar smaller 
+
+[ ] - 
 
 
 # [ ] - Documentation goals 

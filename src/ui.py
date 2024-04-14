@@ -30,8 +30,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.addClientCata.toggled.connect(self.add_client_radio_buttons)
         self.addClientButton.clicked.connect(self.add_client_button)
 
-        self.searchBar.setText("pfQuest")
-        # Holds the values of the selected radio buttons on each tab 
+        # Change properties of searchAddonsScrollArea
+        #self.searchAddonsScrollArea.setWidgetResizable(True)
+        #self.searchAddonsScrollArea.setMinimumSize(350,350)
+        #self.searchAddonsScrollArea.setVerticalScrollBarPolicy(Qt)
+        
+        self.searchBar.setText("Necrosis")
         self.add_client_xpac = ""
         self.search_client_xpac = ""
 
@@ -40,6 +44,8 @@ class MainWindow(QtWidgets.QMainWindow):
         if sys.platform.startswith("linux"):
             self.fileDialog = QtWidgets.QFileDialog
 
+        self.model = QtGui.QStandardItemModel()
+        self.searchAddonsListView.setModel(self.model)
     # Search button to search for addons , uses AddonWidget to populate listview
     def search_button(self):
         addon_name = self.searchBar.text()
@@ -48,14 +54,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.resultWidget = AddonWidget()
         self.resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
 
-        
-
         resultWidgetLayout = self.resultWidget.get_layout()
-        #TODO: Find out why searchAddonsLayout can't be referenced
-        self.searchAddonsLayout.addLayout(resultWidgetLayout)
+        # Add layout from AddonWidget to the layout on searchAddonsLayout
+
+        #self.searchAddonsScrollArea.setWidget(self.resultWidget)
+        self.model.appendRow(self.resultWidget)
+        
+        # self.searchAddonsLayout.addWidget(self.resultWidget)
+
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):
+        
 
         # pull what radio button was selected
         if sys.platform.startswith("linux"):
