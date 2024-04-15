@@ -32,46 +32,69 @@
          <layout class="QVBoxLayout" name="searchAddonsLayout"/>
         </item>
         <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <layout class="QVBoxLayout" name="xpacLayout">
           <item>
-           <widget class="QRadioButton" name="searchVanillaButton">
-            <property name="text">
-             <string>Vanilla</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="xpacRadioLayout">
+            <item alignment="Qt::AlignBottom">
+             <widget class="QRadioButton" name="searchCataButton">
+              <property name="text">
+               <string>Cata</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignBottom">
+             <widget class="QRadioButton" name="searchWotlkButton">
+              <property name="text">
+               <string>Wotlk</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignBottom">
+             <widget class="QRadioButton" name="searchTbcButton">
+              <property name="text">
+               <string>TBC</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignBottom">
+             <widget class="QRadioButton" name="searchVanillaButton">
+              <property name="text">
+               <string>Vanilla</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item>
-           <widget class="QRadioButton" name="searchTbcButton">
-            <property name="text">
-             <string>TBC</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="searchWotlkButton">
-            <property name="text">
-             <string>Wotlk</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="searchCataButton">
-            <property name="text">
-             <string>Cata</string>
-            </property>
-           </widget>
-          </item>
-          <item>
+          <item alignment="Qt::AlignBottom">
            <widget class="QLineEdit" name="searchBar"/>
           </item>
-          <item>
-           <widget class="QPushButton" name="searchButton">
-            <property name="text">
-             <string>Search</string>
-            </property>
-           </widget>
-          </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="searchButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
