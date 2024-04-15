@@ -45,14 +45,14 @@ class MainWindow(QtWidgets.QMainWindow):
         addon_name = self.searchBar.text()
         addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
 
-        self.resultWidget = AddonWidget()
-        self.resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
+        resultWidget = AddonWidget()
+        resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
 
         
 
-        resultWidgetLayout = self.resultWidget.get_layout()
+        resultWidgetLayout = resultWidget.get_layout()
         #TODO: Find out why searchAddonsLayout can't be referenced
-        self.searchAddonsLayout.addLayout(resultWidgetLayout)
+        self.searchAddonsLayout.addWidget(resultWidget)
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):
