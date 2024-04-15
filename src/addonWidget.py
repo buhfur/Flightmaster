@@ -36,6 +36,7 @@ class AddonWidget(QtWidgets.QWidget):
         #self.AddonWidgetLayout.addWidget(self.addon_desc_scroll)
 
         
+        self.setLayout(self.AddonWidgetLayout)
 
 
 
