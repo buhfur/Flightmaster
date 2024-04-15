@@ -215,3 +215,5 @@ First objective is to get the "Adding clients" section of the ui done and over w
 [ ] - Populate table with addon name and description and download using button
 
 [ ] -  Fix the scrollBar from  overlapping the search bar
+
+[ ] - Change addon widget to look more user friendly
