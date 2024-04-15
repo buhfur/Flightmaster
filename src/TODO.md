@@ -209,9 +209,9 @@ First objective is to get the "Adding clients" section of the ui done and over w
 # Frontend TODO 
 
 
+
 [x] - find out why fs[0] client path in add_client_button and add_client_to profile, for some reason the path supplied is always a slash "/" and I have no idea why. Try to figure this out when you're sober.
 [x] - button that allows you to select the install location for clients 
 [ ] - Populate table with addon name and description and download using button
 
-
-
+[ ] -  Fix the scrollBar from  overlapping the search bar

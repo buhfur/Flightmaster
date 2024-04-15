@@ -3,6 +3,7 @@
 
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import Qt
 from PyQt6 import uic
 import logging
 from utils import *
@@ -34,11 +35,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self.container = QtWidgets.QWidget()
         self.containerLayout = QtWidgets.QVBoxLayout(self.container)
 
+        #self.containerLayout.setContentsMargins(50,0,0,0)
+        #self.containerLayout.setSpacing(50)
+
+
         #================ Scrollbar testing ===========
         self.scrollBar = QtWidgets.QScrollArea()
         self.scrollBar.setWidget(self.container)
         self.scrollBar.setParent(self.searchAddonsTab)
         self.scrollBar.setWidgetResizable(True)
+        self.scrollBar.resize(AddonWidget().sizeHint()) # This helps for some reason
+        self.searchAddonsLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.xpacLayout.setAlignment(Qt.AlignmentFlag.AlignBottom)
+
+
         #=========== UI elements end =========== 
         self.searchBar.setText("pfQuest")
         self.add_client_xpac = ""
@@ -66,7 +76,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.containerLayout.addWidget(resultWidget)
         #================ Testing temp widget  ===========
 
-        self.searchAddonsLayout.addWidget(self.scrollBar)
+        self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):
