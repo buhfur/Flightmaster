@@ -15,23 +15,32 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__(*args, **kwargs)
 
         uic.loadUi("ui/main.ui", self)
+
+        #=========== UI elements =========== 
         self.searchButton.clicked.connect(self.search_button)
 
-        # Radio buttons on "Install Addons" tab
         self.searchVanillaButton.toggled.connect(self.search_radio_buttons)
         self.searchTbcButton.toggled.connect(self.search_radio_buttons)
         self.searchWotlkButton.toggled.connect(self.search_radio_buttons)
         self.searchCataButton.toggled.connect(self.search_radio_buttons)
 
-        # Radio buttons on the "Add Clients" tab
         self.addClientVanilla.toggled.connect(self.add_client_radio_buttons)
         self.addClientTbc.toggled.connect(self.add_client_radio_buttons)
         self.addClientWotlk.toggled.connect(self.add_client_radio_buttons)
         self.addClientCata.toggled.connect(self.add_client_radio_buttons)
         self.addClientButton.clicked.connect(self.add_client_button)
 
+        #================ Testing temp widget  ===========
+        self.container = QtWidgets.QWidget()
+        self.containerLayout = QtWidgets.QVBoxLayout(self.container)
+
+        #================ Scrollbar testing ===========
+        self.scrollBar = QtWidgets.QScrollArea()
+        self.scrollBar.setWidget(self.container)
+        self.scrollBar.setParent(self.searchAddonsTab)
+        self.scrollBar.setWidgetResizable(True)
+        #=========== UI elements end =========== 
         self.searchBar.setText("pfQuest")
-        # Holds the values of the selected radio buttons on each tab 
         self.add_client_xpac = ""
         self.search_client_xpac = ""
 
@@ -51,8 +60,13 @@ class MainWindow(QtWidgets.QMainWindow):
         
 
         resultWidgetLayout = resultWidget.get_layout()
-        #TODO: Find out why searchAddonsLayout can't be referenced
-        self.searchAddonsLayout.addWidget(resultWidget)
+
+        
+        #================ Testing temp widget  ===========
+        self.containerLayout.addWidget(resultWidget)
+        #================ Testing temp widget  ===========
+
+        self.searchAddonsLayout.addWidget(self.scrollBar)
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):
