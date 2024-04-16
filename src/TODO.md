@@ -212,8 +212,14 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - find out why fs[0] client path in add_client_button and add_client_to profile, for some reason the path supplied is always a slash "/" and I have no idea why. Try to figure this out when you're sober.
 [x] - button that allows you to select the install location for clients 
-[ ] - Populate table with addon name and description and download using button
+[x] - Populate table with addon name and description and download using button
 
-[ ] -  Fix the scrollBar from  overlapping the search bar
+[x] -  Fix the scrollBar from  overlapping the search bar
 
-[ ] - Change addon widget to look more user friendly
+[x] - Change addon widget to look more user friendly
+
+[ ] - Add layout with widgets that present info about already installed clients
+
+# Backend todo 
+
+[ ] - Write replacement function for get_addons_desc() to pull the description text from the smaller description text on the searched addons page 
