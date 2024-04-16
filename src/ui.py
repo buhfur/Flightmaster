@@ -107,17 +107,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 
-    # test function to see if I can add the elements from AddonWidget to the main window
-    def test_add_to_window(self):
-        self.addon_frame = QtWidgets.QVBoxLayout()
-        self.addon_image_label = QtWidgets.QLabel()
-        self.addon_name_label = QtWidgets.QLabel("Name:")
-        self.addon_name_text = QtWidgets.QLabel("")
-        self.addon_desc_label = QtWidgets.QLabel("Description :")
-        self.addon_desc_text = QtWidgets.QLabel("")
-
-
-
 
 
 

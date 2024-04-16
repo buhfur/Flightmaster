@@ -222,4 +222,6 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 # Backend todo 
 
+[ ] - get intall button working for the searched addon
+
 [ ] - Write replacement function for get_addons_desc() to pull the description text from the smaller description text on the searched addons page 
