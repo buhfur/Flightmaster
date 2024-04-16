@@ -50,7 +50,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
         #=========== UI elements end =========== 
-        self.searchBar.setText("pfQuest")
+        self.searchBar.setText("pfQuest")  # TODO: remove later
         self.add_client_xpac = ""
         self.search_client_xpac = ""
 
@@ -61,39 +61,41 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # Search button to search for addons , uses AddonWidget to populate listview
     def search_button(self):
-        addon_name = self.searchBar.text()
-        addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
+        if self.search_client_xpac != "": 
+            addon_name = self.searchBar.text()
+            addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
 
-        resultWidget = AddonWidget()
-        resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
+            resultWidget = AddonWidget()
+            resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
 
-        
-
-        resultWidgetLayout = resultWidget.get_layout()
-
-        
-        #================ Testing temp widget  ===========
-        self.containerLayout.addWidget(resultWidget)
-        #================ Testing temp widget  ===========
-
-        self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
+            resultWidgetLayout = resultWidget.get_layout()
+            self.containerLayout.addWidget(resultWidget)
+            self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
+        else:
+            error = QtWidgets.QMessageBox.critical(self, "Error", "No expac selected , please select the version of your client")
+ 
 
     # Adds client Interface/Addons path for addon installations 
     def add_client_button(self):
 
+        
         # pull what radio button was selected
         if sys.platform.startswith("linux"):
-            print("linux detected")
-            fs = self.fileDialog.getExistingDirectory(self, "/home/")
+            if self.add_client_xpac != "":
+                print('did run')
+                fs = self.fileDialog.getExistingDirectory(self, "/home/")
+                add_client_to_profile(self.add_client_xpac.lower(), fs)
+            else:
+                print('did not run')
+                error = QtWidgets.QMessageBox.critical(self, "Error", "No expac selected , please select the version of your client")
 
         elif sys.platform.startswith("win32"):
-            print("windows detected")
-            fs = self.fileDialog.getExistingDirectory(self, "C:\\Users\\", QFileDialog.DontUseNativeDialog )
+            if self.add_client_xpac != "":
+                fs = self.fileDialog.getExistingDirectory(self, "C:\\Users\\", QFileDialog.DontUseNativeDialog )
 
-
-        add_client_to_profile(self.add_client_xpac.lower(), fs)
+                add_client_to_profile(self.add_client_xpac.lower(), fs)
         #All this does is pretty print the profile.yml
-        utils.p_profile()
+        #utils.p_profile()
 
 
     # Handler for the "Install Addons" tab buttons 

@@ -20,7 +20,7 @@ class AddonWidget(QtWidgets.QWidget):
         self.installLayout = QtWidgets.QVBoxLayout()
 
         self.addon_image_label = QtWidgets.QLabel()
-        self.addon_name_label = QtWidgets.QLabel("Name:")
+        self.addon_name_label = QtWidgets.QLabel("")
         self.addon_desc_label = QtWidgets.QLabel("Description :")
         self.addon_desc_label.setWordWrap(True)
         #self.addon_desc_text = QtWidgets.QLabel()
@@ -44,7 +44,7 @@ class AddonWidget(QtWidgets.QWidget):
 
     # Adds text to labels , url is the url of the photo  called after get_addon_desc() is called 
     def setup(self, name,client,desc,url):
-        self.addon_name_label.setText(f"Name : {name}")
+        self.addon_name_label.setText(f"{name}")
         self.addon_desc_label.setText(desc)
 
         try: # try to set photo 
@@ -61,9 +61,11 @@ class AddonWidget(QtWidgets.QWidget):
 
     # Installs the addon to the client in profile.yml
     def install_addon_button(self):
-       download_url = get_legacy_wow_addons(self.addon_name_text, self.client) 
        if self.client != "":
+           download_url = get_legacy_wow_addons(self.addon_name_label.text(), self.client) 
            install_addon(self.client, download_url)
+           error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
+
        else:
            #TODO: add some popups for both when the download is done or coulden't start
            logger.debug("Client is not set ! ")

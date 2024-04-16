@@ -133,8 +133,11 @@ Arguments :
         Description: 
     url : 
         Type : <class 'str'>
-        Description: 
 
+
+
+Returns: 
+    str:filename -> returns the filename of the addon downloaded 
 '''
 def install_addon(client,url):
 
@@ -179,11 +182,10 @@ Arguments:
 '''
 def get_legacy_wow_addons(addon_name, client):
 
+    logger.debug(f'ADDON NAME :  {addon_name}')
     url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
-    logger.debug(f"URL HERE :{url}")
     sc = Scraper() 
     res = sc.get_addon_links(url)
-    
     try:
         match = difflib.get_close_matches(addon_name, res)
         logger.debug(f'RETURN URL : {url+"/"+match[0]}')
@@ -193,7 +195,9 @@ def get_legacy_wow_addons(addon_name, client):
         logger.debug("No results found for the addon specified")
 
 
-'''Adds world of warcraft client folder to profile.yml
+'''
+
+Adds world of warcraft client folder to profile.yml
 
 Arguments : 
 

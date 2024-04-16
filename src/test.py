@@ -76,7 +76,7 @@ def test_populate_profile(path_map):
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
     client="vanilla"
-    url = get_legacy_wow_addons("AtlasLoot",client)
+    url = get_legacy_wow_addons("pfQuest",client)
     return install_addon(client,url)
 
 
@@ -158,5 +158,5 @@ Testing main function , i've also added some cli argument handling to ease the t
 
 '''
 
+
    
-get_tip('AtlasLoot', 'vanilla')

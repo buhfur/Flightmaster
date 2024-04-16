@@ -220,8 +220,11 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [ ] - Add layout with widgets that present info about already installed clients
 
+[ ] - Change radio buttons to dropdown selection
 # Backend todo 
 
-[ ] - get intall button working for the searched addon
+[ ] - use a placeholder photo in the event an addon picture cannot be found
+
+[ ] - get intall button working for the searched addon on the addon widget
 
 [ ] - Write replacement function for get_addons_desc() to pull the description text from the smaller description text on the searched addons page 
