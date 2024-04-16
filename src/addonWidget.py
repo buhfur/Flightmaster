@@ -10,33 +10,34 @@ class AddonWidget(QtWidgets.QWidget):
 
     def __init__(self, steps=5, *args, **kwargs ):
         super(AddonWidget, self).__init__()
-        self.AddonWidgetLayout = QtWidgets.QVBoxLayout()
 
-        #self.addon_desc_scroll = QtWidgets.QScrollArea()
-        
+        self.client = ""
+
+        # ======= UI ELEMENTS =========================
+        self.parentLayout = QtWidgets.QHBoxLayout()
+        self.textLayout = QtWidgets.QVBoxLayout()
+        self.picLayout = QtWidgets.QVBoxLayout()
+        self.installLayout = QtWidgets.QVBoxLayout()
+
         self.addon_image_label = QtWidgets.QLabel()
         self.addon_name_label = QtWidgets.QLabel("Name:")
         self.addon_desc_label = QtWidgets.QLabel("Description :")
-        self.addon_desc_text = QtWidgets.QTextBrowser()
-
-
-
-        self.client = ""
+        self.addon_desc_label.setWordWrap(True)
+        #self.addon_desc_text = QtWidgets.QLabel()
         self.install_button = QtWidgets.QPushButton("Install")
         self.install_button.clicked.connect(self.install_addon_button)
-        
-        
-        self.AddonWidgetLayout.addWidget(self.addon_image_label)
-        self.AddonWidgetLayout.addWidget(self.addon_name_label)
-        self.AddonWidgetLayout.addWidget(self.addon_desc_label)
-        self.AddonWidgetLayout.addWidget(self.addon_desc_text)
-        self.AddonWidgetLayout.addWidget(self.install_button)
+        self.picLayout.addWidget(self.addon_image_label)
+        self.textLayout.addWidget(self.addon_name_label)
+        self.textLayout.addWidget(self.addon_desc_label)
+        self.installLayout.addWidget(self.install_button)
+        #self.parentLayout.addWidget(self.addon_desc_text)
 
-        #self.addon_desc_scroll.setWidget(self.addon_desc_text)
-        #self.AddonWidgetLayout.addWidget(self.addon_desc_scroll)
+        self.parentLayout.addLayout(self.picLayout)
+        self.parentLayout.addLayout(self.textLayout)
+        self.parentLayout.addLayout(self.installLayout)
 
-        
-        self.setLayout(self.AddonWidgetLayout)
+        self.setLayout(self.parentLayout)
+        # ======= UI ELEMENTS =========================
 
 
 
@@ -44,7 +45,7 @@ class AddonWidget(QtWidgets.QWidget):
     # Adds text to labels , url is the url of the photo  called after get_addon_desc() is called 
     def setup(self, name,client,desc,url):
         self.addon_name_label.setText(f"Name : {name}")
-        self.addon_desc_text.setPlainText(desc)
+        self.addon_desc_label.setText(desc)
 
         try: # try to set photo 
             url_photo = urllib.request.urlopen(url).read()
@@ -68,4 +69,4 @@ class AddonWidget(QtWidgets.QWidget):
            logger.debug("Client is not set ! ")
 
     def get_layout(self):
-        return self.AddonWidgetLayout 
+        return self.parentLayout 

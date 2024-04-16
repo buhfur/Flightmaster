@@ -38,15 +38,15 @@ class MainWindow(QtWidgets.QMainWindow):
         #self.containerLayout.setContentsMargins(50,0,0,0)
         #self.containerLayout.setSpacing(50)
 
-
+       
         #================ Scrollbar testing ===========
         self.scrollBar = QtWidgets.QScrollArea()
         self.scrollBar.setWidget(self.container)
-        self.scrollBar.setParent(self.searchAddonsTab)
         self.scrollBar.setWidgetResizable(True)
-        self.scrollBar.resize(AddonWidget().sizeHint()) # This helps for some reason
+        self.scrollBar.resize(self.searchAddonsTab.sizeHint()) 
         self.searchAddonsLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.xpacLayout.setAlignment(Qt.AlignmentFlag.AlignBottom)
+        self.searchAddonsLayout.addWidget(self.scrollBar) 
 
 
         #=========== UI elements end =========== 
