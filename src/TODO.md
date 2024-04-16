@@ -228,3 +228,6 @@ First objective is to get the "Adding clients" section of the ui done and over w
 [ ] - get intall button working for the searched addon on the addon widget
 
 [ ] - Write replacement function for get_addons_desc() to pull the description text from the smaller description text on the searched addons page 
+
+
+[ ] - find out whatever is going on with the difflib search in  addonWidget
