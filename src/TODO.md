@@ -220,6 +220,8 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - Change addon widget to look more user friendly
 
+[ ] - Change the addon widget to have a box drawn around it to separate other widgets
+
 [ ] - Add layout with widgets that present info about already installed clients
 
 [ ] - Change radio buttons to dropdown selection

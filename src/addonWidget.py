@@ -52,11 +52,10 @@ class AddonWidget(QtWidgets.QWidget):
             pixmap.loadFromData(url_photo)
             self.addon_image_label.setPixmap(pixmap)
         except urllib.error.HTTPError as e:
-            # TODO: Use placeholder image if none can be found  
             pixmap = QtGui.QPixmap('./images/placeholder.png')
             logger.debug("unable to find photo")
 
-        self.addon_image_label.setPixmap(pixmap)
+        self.addon_image_label.setPixmap(pixmap) 
         self.client = client
 
         
@@ -68,13 +67,9 @@ class AddonWidget(QtWidgets.QWidget):
            logger.debug(f'self.client: {self.client}')
            download_url = get_legacy_wow_addons(self.addon_name_label.text(), self.client) 
            zip_filename = install_addon(self.client, download_url)
-           # TODO: unzip the installed zipfile 
            unzip_addon(zip_filename)
            error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
 
        else:
-           #TODO: add some popups for both when the download is done or coulden't start
            error = QtWidgets.QMessageBox.critical(self, "Error", "Client is not set ! ")
 
-    def get_layout(self):
-        return self.parentLayout 
