@@ -81,33 +81,32 @@ def unzip_addon(addon_zip_path):
 
     zf = zipfile.ZipFile(addon_zip_path)
     install_directory =  os.path.dirname(addon_zip_path) 
+    logger.debug(f'install_directory : {install_directory}')
 
     with zipfile.ZipFile(addon_zip_path, 'r') as zip_ref:
         zip_ref.extractall(install_directory)
         logger.debug(f"Unzipped {addon_zip_path} to {install_directory} ")
 
-
     # zip file without .zip extension
     folder_stem = pathlib.Path(addon_zip_path).stem 
     folder_path = os.path.join(install_directory, folder_stem)
     logger.debug(f'whole path : {folder_path}')
-    
+
     # checks if file is a .toc file
-    for file in os.listdir(folder_path):
-        if file.endswith(".toc"):
-            logger.debug(f'found {file}')
-            file_stem = pathlib.Path(file).stem # zip name without .zip
+    try: 
+        for file in os.listdir(folder_path):
+            if file.endswith(".toc"):
+                logger.debug(f'found {file}')
+                file_stem = pathlib.Path(file).stem # zip name without .zip
+                # Checks if folder name and TOC file differ
+                if folder_stem != file_stem:
+                    logger.debug("Changing directory name to name of *.toc file")
+                    new_folder_name = os.path.join()
+                    os.rename(folder_path, os.path.join(install_directory, file_stem))
+                    logger.debug(f'renamed {folder_path} to {os.path.join(install_directory, file_stem) } ')
 
-            # Checks if folder name and TOC file differ
-            if folder_stem != file_stem:
-                logger.debug("Changing directory name to name of *.toc file")
-            
-                new_folder_name = os.path.join()
-                os.rename(folder_path, os.path.join(install_directory, file_stem))
-
-
-                logger.debug(f'renamed {folder_path} to {os.path.join(install_directory, file_stem) } ')
-
+    except Exception as e: 
+        logger.debug(e)
 
     #remove zip file 
     try:

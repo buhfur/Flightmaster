@@ -39,8 +39,6 @@ def generate_structure():
             logger.debug(f"path: {x} was created ")
 
     return path_map 
-   
-    
 
 
 
@@ -80,12 +78,8 @@ def test_install_addons():
     res = get_legacy_wow_addons(addon_name,client) # URL 
     install_addon(client, res)
 
-
-
 def test_get_legacy_addons(name):
     urls = get_legacy_wow_addons(name,"vanilla")
-
-
 
 def test_add_client_to_profile():
     # Generate test directory 
@@ -105,9 +99,7 @@ def test_add_client_to_profile():
 
 # Test function to be later implemented in utils.py
 def test_get_addon_desc(addon_name, client):
-
     logger.debug(get_addon_desc(addon_name, client))
-    
 
 # Test function  to eventually replace the old get_addons_desc
 def get_tip(addon_name, client):
@@ -148,18 +140,6 @@ def get_tip(addon_name, client):
     return (text, url)
 
 
-
-
-
-'''
-
-Testing main function , i've also added some cli argument handling to ease the testing process: 
-
-    Arguments : 
-        -n [x] , --name     search for addon [x] on legacy-wow.com
-        -d [x] , --desc     get description of addon from legacy-wow.com
-
-'''
 
 
 generate_structure()

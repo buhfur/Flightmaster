@@ -50,7 +50,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
         #=========== UI elements end =========== 
-        self.searchBar.setText("pfQuest")  # TODO: remove later
+        self.searchBar.setText("AtlasLoot")  # TODO: remove later
         self.add_client_xpac = ""
         self.search_client_xpac = ""
 
@@ -92,8 +92,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 fs = self.fileDialog.getExistingDirectory(self, "C:\\Users\\", QFileDialog.DontUseNativeDialog )
 
                 add_client_to_profile(self.add_client_xpac.lower(), fs)
-        #All this does is pretty print the profile.yml
-        #utils.p_profile()
 
 
     # Handler for the "Install Addons" tab buttons 

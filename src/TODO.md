@@ -211,7 +211,9 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 
 [x] - find out why fs[0] client path in add_client_button and add_client_to profile, for some reason the path supplied is always a slash "/" and I have no idea why. Try to figure this out when you're sober.
+
 [x] - button that allows you to select the install location for clients 
+
 [x] - Populate table with addon name and description and download using button
 
 [x] -  Fix the scrollBar from  overlapping the search bar
@@ -221,6 +223,11 @@ First objective is to get the "Adding clients" section of the ui done and over w
 [ ] - Add layout with widgets that present info about already installed clients
 
 [ ] - Change radio buttons to dropdown selection
+
+[ ] - Allow the user to only type to search addons when the app stops 
+
+[ ] - Add placeholder image when none is found
+
 # Backend todo 
 
 [ ] - use a placeholder photo in the event an addon picture cannot be found
@@ -256,3 +263,5 @@ I do believe this may be the cause , after doing that i'm now starting to get Ke
 **FIX: changing the expansion name to lowercase was the solution here
 
 Now I just gotta verify that the  addon installed , and then unzip the zip file , unless  this just did it for me 
+
+
