@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QFrame
 from PyQt6 import uic
 import logging
 from utils import *
 import urllib
 
-class AddonWidget(QtWidgets.QWidget):
+class AddonWidget(QtWidgets.QFrame):
 
     def __init__(self, steps=5, *args, **kwargs ):
         super(AddonWidget, self).__init__()
@@ -38,7 +39,7 @@ class AddonWidget(QtWidgets.QWidget):
 
         self.setLayout(self.parentLayout)
         # ======= UI ELEMENTS =========================
-
+        self.setFrameStyle(QtWidgets.QFrame.Shape.Panel | QtWidgets.QFrame.Shadow.Plain)
 
 
 

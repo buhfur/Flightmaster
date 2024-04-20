@@ -67,6 +67,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
             resultWidget = AddonWidget()
             resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
+            #===== Testing adding frame to custom widget =======
 
             self.containerLayout.addWidget(resultWidget)
             self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
