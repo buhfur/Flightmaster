@@ -21,7 +21,7 @@
        <string/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="searchAddonsTab">
        <attribute name="title">
@@ -200,20 +200,10 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="addonListTab">
        <attribute name="title">
         <string>My Addons</string>
        </attribute>
-       <widget class="QTableWidget" name="myAddonsTable">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>651</width>
-          <height>511</height>
-         </rect>
-        </property>
-       </widget>
       </widget>
      </widget>
     </item>

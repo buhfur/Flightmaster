@@ -220,7 +220,7 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - Change addon widget to look more user friendly
 
-[ ] - Change the addon widget to have a box drawn around it to separate other widgets
+[x] - Change the addon widget to have a box drawn around it to separate other widgets
 
 [ ] - Add layout with widgets that present info about already installed clients
 
@@ -235,6 +235,8 @@ First objective is to get the "Adding clients" section of the ui done and over w
 [x] - use a placeholder photo in the event an addon picture cannot be found
 
 [x] - get intall button working for the searched addon on the addon widget
+
+[ ] - Script to pull all installed addons for clients listed in profile.yml
 
 [ ] - Write replacement function for get\_addons\_desc() to pull the description text from the smaller description text on the searched addons page 
 
