@@ -228,13 +228,13 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [ ] - Allow the user to only type to search addons when the app stops 
 
-[ ] - Add placeholder image when none is found
+[x] - Add placeholder image when none is found
 
 # Backend todo 
 
-[ ] - use a placeholder photo in the event an addon picture cannot be found
+[x] - use a placeholder photo in the event an addon picture cannot be found
 
-[ ] - get intall button working for the searched addon on the addon widget
+[x] - get intall button working for the searched addon on the addon widget
 
 [ ] - Write replacement function for get\_addons\_desc() to pull the description text from the smaller description text on the searched addons page 
 
