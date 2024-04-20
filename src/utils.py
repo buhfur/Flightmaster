@@ -163,6 +163,8 @@ def install_addon(client,url):
             return install_filename
 
 
+        else:
+            logger.debug("Path does not exist")
 ''' 
 Description: returns the URL of a zipfile for the searched addon
 
@@ -178,15 +180,15 @@ Arguments:
 
     Returns : 
 
-        Returns a <class 'str'> with the url of the addon searched
+        Returns string of a URL to a zip file , this string will should be passed to install_addon(client, url) with the string name of the client given and the url to download the file from
 '''
 def get_legacy_wow_addons(addon_name, client):
 
-    logger.debug(f'ADDON NAME :  {addon_name}')
     url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
     sc = Scraper() 
-    res = sc.get_addon_links(url)
+    res = sc.get_addon_links(url) # contains list of urls to search
     try:
+        logger.debug(f'ADDON NAME : {addon_name}\nRES: {type(res)}')
         match = difflib.get_close_matches(addon_name, res)
         logger.debug(f'RETURN URL : {url+"/"+match[0]}')
         return url+"/"+match[0] # returns URL of addon to install 

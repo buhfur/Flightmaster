@@ -82,11 +82,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # pull what radio button was selected
         if sys.platform.startswith("linux"):
             if self.add_client_xpac != "":
-                print('did run')
                 fs = self.fileDialog.getExistingDirectory(self, "/home/")
                 add_client_to_profile(self.add_client_xpac.lower(), fs)
             else:
-                print('did not run')
                 error = QtWidgets.QMessageBox.critical(self, "Error", "No expac selected , please select the version of your client")
 
         elif sys.platform.startswith("win32"):

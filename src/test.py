@@ -76,12 +76,15 @@ def test_populate_profile(path_map):
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
     client="vanilla"
-    url = get_legacy_wow_addons("pfQuest",client)
-    return install_addon(client,url)
+    addon_name = "pfQuest"
+    res = get_legacy_wow_addons(addon_name,client) # URL 
+    install_addon(client, res)
+
 
 
 def test_get_legacy_addons(name):
-    url = get_legacy_wow_addons(name,"vanilla")
+    urls = get_legacy_wow_addons(name,"vanilla")
+
 
 
 def test_add_client_to_profile():
@@ -159,4 +162,6 @@ Testing main function , i've also added some cli argument handling to ease the t
 '''
 
 
-   
+generate_structure()
+print(test_install_addons())
+

@@ -227,7 +227,32 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [ ] - get intall button working for the searched addon on the addon widget
 
-[ ] - Write replacement function for get_addons_desc() to pull the description text from the smaller description text on the searched addons page 
+[ ] - Write replacement function for get\_addons\_desc() to pull the description text from the smaller description text on the searched addons page 
 
 
 [ ] - find out whatever is going on with the difflib search in  addonWidget
+
+
+# [ ] - Add addon to client in GUI 
+
+
+Ok for some reason i've noticed that some data is not being  processed as well in other parts of the application. It seems like there is some code I didn't test or some input I was not expecting.  I will note here what the issue is as I investigate
+
+
+When testing the install\_addon() function , it seems like the app isn't seeing the path listed for the user in the temporary populated profile.yml. Ah the  reason for this is my install location for the addons in my profile.yml. For testing i'm currently putting all directories in the /tmp/ directory on linux. A quick run of the generate\_structure function should do the trick.
+
+Yep, that did the trick.
+
+I wonder if that's why the button hasn't been working this entire time....
+
+Nope , for some reason I keep getting an error from difflib. Saying there's a NoneType being passed into the function. Which doens't make sense as I have a test script which feeds the function the same input that the GUI would give...
+
+Just tested it again , except this time with pfQuest , it installs without issue. I have no idea where  this difflib error is coming from. I've triggered it in the past using the .lower()  function on a string. I wonder if  there's anywhere in the app where  this is happening 
+
+I just noticed the expansion is upper case when it's supposed to be lowercase, gonna  lower it and see what happens
+
+I do believe this may be the cause , after doing that i'm now starting to get KeyError's from other function ,referencing "Vanilla"
+
+**FIX: changing the expansion name to lowercase was the solution here
+
+Now I just gotta verify that the  addon installed , and then unzip the zip file , unless  this just did it for me 

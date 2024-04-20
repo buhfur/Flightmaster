@@ -62,13 +62,16 @@ class AddonWidget(QtWidgets.QWidget):
     # Installs the addon to the client in profile.yml
     def install_addon_button(self):
        if self.client != "":
+           self.client = self.client.lower()
+           logger.debug(f'self.client: {self.client}')
            download_url = get_legacy_wow_addons(self.addon_name_label.text(), self.client) 
            install_addon(self.client, download_url)
+           # TODO: unzip the installed zipfile 
            error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
 
        else:
            #TODO: add some popups for both when the download is done or coulden't start
-           logger.debug("Client is not set ! ")
+           error = QtWidgets.QMessageBox.critical(self, "Error", "Client is not set ! ")
 
     def get_layout(self):
         return self.parentLayout 
