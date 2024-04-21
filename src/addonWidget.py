@@ -24,14 +24,12 @@ class AddonWidget(QtWidgets.QFrame):
         self.addon_name_label = QtWidgets.QLabel("")
         self.addon_desc_label = QtWidgets.QLabel("Description :")
         self.addon_desc_label.setWordWrap(True)
-        #self.addon_desc_text = QtWidgets.QLabel()
         self.install_button = QtWidgets.QPushButton("Install")
         self.install_button.clicked.connect(self.install_addon_button)
         self.picLayout.addWidget(self.addon_image_label)
         self.textLayout.addWidget(self.addon_name_label)
         self.textLayout.addWidget(self.addon_desc_label)
         self.installLayout.addWidget(self.install_button)
-        #self.parentLayout.addWidget(self.addon_desc_text)
 
         self.parentLayout.addLayout(self.picLayout)
         self.parentLayout.addLayout(self.textLayout)
@@ -43,7 +41,7 @@ class AddonWidget(QtWidgets.QFrame):
 
 
 
-    # Adds text to labels , url is the url of the photo  called after get_addon_desc() is called 
+    # Takes data from profile.yml and displays it  
     def setup(self, name,client,desc,url):
         self.addon_name_label.setText(f"{name}")
         self.addon_desc_label.setText(desc)
@@ -67,9 +65,12 @@ class AddonWidget(QtWidgets.QFrame):
            self.client = self.client.lower()
            logger.debug(f'self.client: {self.client}')
            download_url = get_legacy_wow_addons(self.addon_name_label.text(), self.client) 
-           zip_filename = install_addon(self.client, download_url)
-           unzip_addon(zip_filename)
-           error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
+           if download_url == 0:
+               error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
+           else:
+               zip_filename = install_addon(self.client, self.addon_name_label.text(),download_url)
+               unzip_addon(zip_filename)
+               error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
 
        else:
            error = QtWidgets.QMessageBox.critical(self, "Error", "Client is not set ! ")

@@ -204,16 +204,15 @@
        <attribute name="title">
         <string>My Addons</string>
        </attribute>
-       <widget class="QWidget" name="verticalLayoutWidget">
+       <widget class="QListWidget" name="listWidget">
         <property name="geometry">
          <rect>
-          <x>2</x>
-          <y>0</y>
+          <x>5</x>
+          <y>1</y>
           <width>591</width>
-          <height>511</height>
+          <height>501</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="myAddonsLayout"/>
        </widget>
       </widget>
      </widget>
@@ -226,7 +225,7 @@
      <x>0</x>
      <y>0</y>
      <width>616</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

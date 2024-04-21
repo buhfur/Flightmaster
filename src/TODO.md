@@ -224,9 +224,9 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [ ] - Add layout with widgets that present info about already installed clients
 
-[ ] - Change radio buttons to dropdown selection
+[ ] - Change radio buttons to combobox selection
 
-[ ] - Allow the user to only type to search addons when the app stops 
+[ ] - Allow the user to only type to search addons when the app starts 
 
 [x] - Add placeholder image when none is found
 

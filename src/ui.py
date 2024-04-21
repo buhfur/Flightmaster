@@ -8,7 +8,7 @@ from PyQt6 import uic
 import logging
 from utils import *
 from addonWidget import AddonWidget
-from installedAddons import addonList
+from addonList import *
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -39,9 +39,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.xpacLayout.setAlignment(Qt.AlignmentFlag.AlignBottom)
         self.searchAddonsLayout.addWidget(self.scrollBar) 
 
-        self.addons = addonList()
-        self.myAddonsLayout.addWidget(self.addons) # adds the custom widget here
-    
+        #============ Testing  out AddonList widget
+        self.addons = AddonList()
 
 
         #=========== UI elements end =========== 
@@ -59,13 +58,15 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.search_client_xpac != "": 
             addon_name = self.searchBar.text()
             addon_desc = get_addon_desc(addon_name,self.search_client_xpac)
+            if addon_desc[0] == '' :
+                error = QtWidgets.QMessageBox.critical(self, "Error", "Description was unable to be fetched")
 
-            resultWidget = AddonWidget()
-            resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
-            #===== Testing adding frame to custom widget =======
+            else:
+                resultWidget = AddonWidget()
+                resultWidget.setup(addon_name,self.search_client_xpac, addon_desc[0], addon_desc[1] )
 
-            self.containerLayout.addWidget(resultWidget)
-            self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
+                self.containerLayout.addWidget(resultWidget)
+                self.searchAddonsLayout.addWidget(self.scrollBar)# This fixed it for me  
         else:
             error = QtWidgets.QMessageBox.critical(self, "Error", "No expac selected , please select the version of your client")
  

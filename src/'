@@ -1,0 +1,11 @@
+- install-directories:
+    epoch: ''
+    tbc: /tmp/addons/tbc/Interface/AddOns
+    turtle: ''
+    vanilla: /tmp/addons/vanilla/Interface/AddOns
+    wotlk: ''
+- installed-addons:
+  -- tbc: []
+  -- turtle: []
+  -- vanilla: []
+  --  wotlk: []

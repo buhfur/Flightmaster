@@ -141,6 +141,8 @@ def get_tip(addon_name, client):
 
 
 
+def test_get_installed_addons():
+    get_installed_addons()
 
 generate_structure()
 print(test_install_addons())

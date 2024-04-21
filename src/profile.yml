@@ -4,3 +4,10 @@ install-directories:
   turtle: ''
   vanilla: /tmp/addons/vanilla/Interface/AddOns
   wotlk: ''
+
+installed-addons:
+  vanilla: {}
+  tbc: {}
+  wotlk: {}
+  epoch: {}
+  turtle: {}
