@@ -8,6 +8,7 @@ from PyQt6 import uic
 import logging
 from utils import *
 from addonWidget import AddonWidget
+from installedAddons import addonList
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -19,27 +20,17 @@ class MainWindow(QtWidgets.QMainWindow):
 
         #=========== UI elements =========== 
         self.searchButton.clicked.connect(self.search_button)
-
         self.searchVanillaButton.toggled.connect(self.search_radio_buttons)
         self.searchTbcButton.toggled.connect(self.search_radio_buttons)
         self.searchWotlkButton.toggled.connect(self.search_radio_buttons)
         self.searchCataButton.toggled.connect(self.search_radio_buttons)
-
         self.addClientVanilla.toggled.connect(self.add_client_radio_buttons)
         self.addClientTbc.toggled.connect(self.add_client_radio_buttons)
         self.addClientWotlk.toggled.connect(self.add_client_radio_buttons)
         self.addClientCata.toggled.connect(self.add_client_radio_buttons)
         self.addClientButton.clicked.connect(self.add_client_button)
-
-        #================ Testing temp widget  ===========
         self.container = QtWidgets.QWidget()
         self.containerLayout = QtWidgets.QVBoxLayout(self.container)
-
-        #self.containerLayout.setContentsMargins(50,0,0,0)
-        #self.containerLayout.setSpacing(50)
-
-       
-        #================ Scrollbar testing ===========
         self.scrollBar = QtWidgets.QScrollArea()
         self.scrollBar.setWidget(self.container)
         self.scrollBar.setWidgetResizable(True)
@@ -47,6 +38,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.searchAddonsLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.xpacLayout.setAlignment(Qt.AlignmentFlag.AlignBottom)
         self.searchAddonsLayout.addWidget(self.scrollBar) 
+
+        self.addons = addonList()
+        self.myAddonsLayout.addWidget(self.addons) # adds the custom widget here
+    
 
 
         #=========== UI elements end =========== 

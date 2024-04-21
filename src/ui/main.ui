@@ -142,7 +142,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="myAddonsTab">
+      <widget class="QWidget" name="addClientsTab">
        <attribute name="title">
         <string>Add Clients</string>
        </attribute>
@@ -200,10 +200,21 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="addonListTab">
+      <widget class="QWidget" name="myAddonsTab">
        <attribute name="title">
         <string>My Addons</string>
        </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>2</x>
+          <y>0</y>
+          <width>591</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="myAddonsLayout"/>
+       </widget>
       </widget>
      </widget>
     </item>
