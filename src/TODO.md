@@ -236,12 +236,18 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - get intall button working for the searched addon on the addon widget
 
+[ ] - Check for duplicates when adding addon to profile in  
+
+[ ] - move documentation out of source files
+
+[ ] - Fix case sensitivity when searching for addons, for some reason "pfQuest" works while "pfquest" doesn't , for example.
+
 [ ] - Script to pull all installed addons for clients listed in profile.yml
 
 [ ] - Write replacement function for get\_addons\_desc() to pull the description text from the smaller description text on the searched addons page 
 
 
-[ ] - find out whatever is going on with the difflib search in  addonWidget
+
 
 
 # [ ] - Add addon to client in GUI 

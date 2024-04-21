@@ -109,6 +109,28 @@ def unzip_addon(addon_zip_path):
 
 
 
+'''
+Description : adds addon install directory to the users profile  , this function is meant to be called from install_addon().  
+
+'''
+    
+def add_addon_to_profile(client, addon_name,install_filename):
+    # Add addon to the profile.yml
+    with open("profile.yml") as f:
+        data = yaml.safe_load(f)
+        installed_addons = data[1]["installed-addons"]
+        #TODO: Check for duplicates before adding the addon to profile.yml
+        for addon in installed_addons[client]:
+            for addon_dict in addon:
+                if addon_name in addon_dict.keys():
+                    logger.debug('addon already present, skipping')
+        else:
+            installed_addons[client].append( { addon_name: str(pathlib.PurePath(install_filename).with_suffix(""))})
+
+
+    with open("profile.yml",'w') as f:
+        yaml.dump(data, f, default_flow_style=False)
+        logger.debug("WIN: added addon to clients profile")
 
 
 
@@ -134,35 +156,23 @@ def install_addon(client,addon_name,url):
 
     sc = Scraper()
     filename = url.rsplit('/', 1)[-1]
-    installed = False
     with open("profile.yml") as f:
         data = yaml.safe_load(f)
-        addon_dir = data["install-directories"]
+        addon_dir = data[0]["install-directories"]
         # Checks if the addon_dir[client] directory string is a real path
         if os.path.exists(addon_dir[client]): 
+            logger.debug('linux detected')
             install_filename = os.path.join(addon_dir[client], filename)
-            #logger.debug(f'FILENAME: {pathlib.PurePath(install_filename).with_suffix("")}')
             headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0.'}
-
             sc.get_zip(install_filename,url)
 
             # Verify addon was actually installed 
             if os.path.isfile(install_filename):
                 logger.debug(f"Addon successfully installed to : {install_filename}")
-                #TODO: add installed addons  name and path to profile.yml
-                installed = True
-
-            return install_filename
-
-        else:
-            logger.debug("Path does not exist")
+   
     
-        # Adds the addon to the profile under the installed-addons
-
-    with open("profile.yml", "w") as f:
-        data = yaml.safe_load(f)
-        clients = data['installed-addons']
-        clients[client] = { addon_name: pathlib.PurePath(install_filename).with_suffix("")}
+                add_addon_to_profile(client,addon_name,install_filename)
+                return install_filename
 
 
 ''' 
@@ -187,10 +197,12 @@ Arguments:
 def get_legacy_wow_addons(addon_name, client):
 
     url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
+    logger.debug(f'URL: {url}')
     sc = Scraper() 
     res = sc.get_addon_links(url) # contains list of urls to search
     try:
         match = difflib.get_close_matches(addon_name, res)
+        logger.debug(f'MATCH: {match}')
         return url+"/"+match[0] # returns URL of addon to install 
 
     except IndexError as e: 
@@ -341,16 +353,16 @@ def get_installed_addons():
 
     # iterate through all installed clients in profile.yml
      with open('profile.yml') as f:
-            yam = yaml.safe_load(f)
-            install_dir = yam['install-directories']
-            
+         yam = yaml.safe_load(f)
+         install_dir = yam['install-directories']
 
-            for x in install_dir.keys():
-                if install_dir[x] != "":
-                    if os.path.exists(install_dir[x]):
-                        # Search for installed addons in install_dir[x]
-                            installed_addon_paths = [x for x in glob(f'install_dir[x]')]
-                        
+
+         for x in install_dir.keys():
+             if install_dir[x] != "":
+                 if os.path.exists(install_dir[x]):
+                     # Search for installed addons in install_dir[x]
+                     installed_addon_paths = [x for x in glob(f'install_dir[x]')]
+
 
 
 

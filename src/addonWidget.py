@@ -66,7 +66,7 @@ class AddonWidget(QtWidgets.QFrame):
            logger.debug(f'self.client: {self.client}')
            download_url = get_legacy_wow_addons(self.addon_name_label.text(), self.client) 
            if download_url == 0:
-               error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
+               error = QtWidgets.QMessageBox.critical(self, "Error", "Unable to find searched addon")
            else:
                zip_filename = install_addon(self.client, self.addon_name_label.text(),download_url)
                unzip_addon(zip_filename)

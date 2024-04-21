@@ -8,16 +8,6 @@
     tbc: []
     turtle: []
     vanilla:
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
-    - name: dir
+    - AtlasLoot: /tmp/addons/vanilla/Interface/AddOns/AtlasLoot
+    - Bagnon: /tmp/addons/vanilla/Interface/AddOns/Bagnon
     wotlk: []

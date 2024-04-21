@@ -50,7 +50,7 @@ def test_populate_profile(path_map):
         data = profile_data['install-directories']
 
         if sys.platform.startswith("linux"):
-            # Convert PosixPath to string ?
+            logger.debug(f"Keys : {x}")
             for x in data.values():
                 logger.debug(f"Keys : {x}")
                 # Convert paths to strings and add to profile.yml
@@ -74,9 +74,10 @@ def test_populate_profile(path_map):
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
     client="vanilla"
-    addon_name = "pfQuest"
+    addon_name = "pfquest"
     res = get_legacy_wow_addons(addon_name,client) # URL 
-    install_addon(client, res)
+    logger.debug(res)
+    #install_addon(client,addon_name, res)
 
 def test_get_legacy_addons(name):
     urls = get_legacy_wow_addons(name,"vanilla")
@@ -144,6 +145,10 @@ def get_tip(addon_name, client):
 def test_get_installed_addons():
     get_installed_addons()
 
-generate_structure()
-print(test_install_addons())
+def test_add_addon_to_profile():
+    install_loc = '/tmp/addons/vanilla/Interface/AddOns'
+    add_addon_to_profile("vanilla", "AtlasLoot")
 
+
+generate_structure() # always run this just for good measure when testing on linux 
+test_get_legacy_addons("pfquest")
