@@ -130,21 +130,29 @@ def add_addon_to_profile(client, addon_name,install_filename):
 
     This function also checks if an addon is already present in the users profile.yml
 
+    Takes the client , addon_name,  and install directory of the addon as input
+
     """
+    installed = False
     with open("profile.yml") as f:
         data = yaml.safe_load(f)
         installed_addons = data[1]["installed-addons"]
+
         for addon in installed_addons[client]:
-            for addon_dict in addon:
-                if addon_name in addon_dict.keys():
-                    logger.debug('addon already present, skipping')
-        else:
-            installed_addons[client].append( { addon_name: str(pathlib.PurePath(install_filename).with_suffix(""))})
+            case_dict = [key.lower() for key in addon.keys()] # Changes the keys in the dictionary to lowercase
+            logger.debug(f'DICT:  {case_dict}')
+            if addon_name.lower() in case_dict:
+                installed=True
+                logger.debug('addon already present, skipping')
+            else:
+                installed_addons[client].append( { addon_name: str(pathlib.PurePath(install_filename).with_suffix(""))})
 
 
-    with open("profile.yml",'w') as f:
-        yaml.dump(data, f, default_flow_style=False)
-        logger.debug("WIN: added addon to clients profile")
+
+    if not installed:
+        with open("profile.yml",'w') as f:
+            yaml.dump(data, f, default_flow_style=False)
+            logger.debug("WIN: added addon to clients profile")
 
 
 
@@ -165,7 +173,7 @@ def install_addon(client,addon_name,url):
 
     Returns
     -----------
-    str 
+    str  : filename of the zipfile with path
     """
 
     sc = Scraper()

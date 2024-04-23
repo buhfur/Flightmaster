@@ -75,10 +75,12 @@ def test_populate_profile(path_map):
 # Test function to install addons to a directory listed in profile.yml , returns path of addon install directory with filename
 def test_install_addons():
     client="vanilla"
-    addon_name = "pfquest"
+    addon_name = "AtlasLoot"
     res = get_legacy_wow_addons(addon_name,client) # URL 
     logger.debug(res)
-    #install_addon(client,addon_name, res)
+    install_filename = install_addon(client,addon_name, res)
+    add_addon_to_profile(client,addon_name, install_filename)
+    
 
 def test_get_legacy_addons(name):
     urls = get_legacy_wow_addons(name,"vanilla")
@@ -137,10 +139,10 @@ def test_get_installed_addons():
     get_installed_addons()
 
 def test_add_addon_to_profile():
-    install_loc = '/tmp/addons/vanilla/Interface/AddOns'
-    add_addon_to_profile("vanilla", "AtlasLoot")
+    install_loc = '/tmp/addons/tbc/Interface/AddOns'
+    add_addon_to_profile("tbc", "AtlasLoot")
 
 
 if __name__ == '__main__':
-    test_add_client_to_profile()
+    test_install_addons()
 

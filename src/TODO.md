@@ -211,6 +211,10 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [ ] - App returns dialog saying there's no client installed while one is clearly listed in profile.yml
 
+[ ] - Addon is still added to profile even when no suitable client is installed
+
+[ ] - when attempting to install an addon that's already installed,  there's an error that triggers the "no client installed" error dialog.  I know the issue might lie somewhere in the add_addon_to_client function 
+
 # Frontend TODO 
 
 

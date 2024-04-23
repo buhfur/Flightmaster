@@ -10,4 +10,5 @@
     turtle: []
     vanilla:
     - AtlasLoot: /tmp/addons/vanilla/Interface/AddOns/AtlasLoot
+    - Bagnon: /tmp/addons/vanilla/Interface/AddOns/Bagnon
     wotlk: []
