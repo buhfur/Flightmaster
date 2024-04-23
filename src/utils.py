@@ -19,24 +19,14 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(filename='logs/utils-log.txt',filemode='w',encoding='utf-8', level=logging.DEBUG)
 
 
-
-''' 
-Description : The scraper object can be used to get all links to addons on the legacy-wow.com website. The get() function returns a list of strings which are URL's to zip archives on the webpage 
-
-
-Methods : 
-
-    get(self, url) : 
-
-        Description : Downloads a zipfile from legacy-wow.com , requires the use of cloudscraper to download.
-
-        Arguments: 
-            url:
-                Type : <class 'str'>
-                Description: Path to zip file in the form of a string
-    
-'''
 class Scraper:
+
+    """ 
+    Description
+    -----------
+    The scraper object can be used to get all links to addons on the legacy-wow.com website. The get() function returns a list of strings which are URL's to zip archives on the webpage 
+   
+    """
 
 
     def __init__(self):
@@ -51,6 +41,18 @@ class Scraper:
 
         return urls
 
+    """
+
+    Description 
+    -----------
+
+    Downloads a zipfile from legacy-wow.com , requires the use of cloudscraper to download.
+
+    Parameters
+    -----------
+    url: str
+
+    """
 
     def get_zip(self,filename, url):
         r = self.scraper.get(url, stream=True)
@@ -64,62 +66,74 @@ class Scraper:
         return self.scraper.get(url)
 
 
+def unzip_addon(addon_zip_path,client):
 
-''' 
-Description : Takes a path of the zipfile in the form of a string , extracts the zipfile in the directory it was installed. Finally , removes the zip file installed
+    """ 
+    Description
+    -----------
 
-
-Arguments : 
-
-    addon_zip_path : 
-        Type : <class 'str'>
-        Description: Path to zip file in the form of a string
-    
-'''
-def unzip_addon(addon_zip_path):
-
-    zf = zipfile.ZipFile(addon_zip_path)
-    install_directory =  os.path.dirname(addon_zip_path) 
-
-    with zipfile.ZipFile(addon_zip_path, 'r') as zip_ref:
-        zip_ref.extractall(install_directory)
-
-    # zip file without .zip extension
-    folder_stem = pathlib.Path(addon_zip_path).stem 
-    folder_path = os.path.join(install_directory, folder_stem)
-
-    # checks if file is a .toc file
-    try: 
-        for file in os.listdir(folder_path):
-            if file.endswith(".toc"):
-                file_stem = pathlib.Path(file).stem # zip name without .zip
-                # Checks if folder name and TOC file differ
-                if folder_stem != file_stem:
-                    new_folder_name = os.path.join()
-                    os.rename(folder_path, os.path.join(install_directory, file_stem))
-
-    except Exception as e: 
-        logger.debug(e)
-
-    #remove zip file 
-    try:
-        os.remove(addon_zip_path)
-    except Exception as e :
-        logger.debug(e)
+    Takes a path of the zipfile in the form of a string , extracts the zipfile in the directory it was installed. Finally , removes the zip file installed
 
 
+    Parameters 
+    -----------
 
-'''
-Description : adds addon install directory to the users profile  , this function is meant to be called from install_addon().  
+    addon_zip_path : str
 
-'''
-    
+    Returns 
+    -----------
+    str or 0 if failed
+        
+    """
+
+    if addon_zip_path is not None :
+
+        zf = zipfile.ZipFile(addon_zip_path)
+        install_directory =  os.path.dirname(addon_zip_path) 
+
+        with zipfile.ZipFile(addon_zip_path, 'r') as zip_ref:
+            zip_ref.extractall(install_directory)
+
+        # zip file without .zip extension
+        folder_stem = pathlib.Path(addon_zip_path).stem 
+        folder_path = os.path.join(install_directory, folder_stem)
+
+        try: 
+            for file in os.listdir(folder_path):
+                if file.endswith(".toc"):
+                    file_stem = pathlib.Path(file).stem # zip name without .zip
+                    # Checks if folder name and TOC file differ
+                    if folder_stem != file_stem:
+                        new_folder_name = os.path.join()
+                        os.rename(folder_path, os.path.join(install_directory, file_stem))
+
+        except Exception as e: 
+            logger.debug(e)
+
+        try:
+            os.remove(addon_zip_path)
+        except Exception as e :
+            logger.debug(e)
+
+    else:
+        logger.debug("No client installation directory listed for {client}")
+        return 0
+
 def add_addon_to_profile(client, addon_name,install_filename):
-    # Add addon to the profile.yml
+ 
+
+    """
+    Description 
+    -----------
+
+    Adds addon install directory to the users profile  , this function is meant to be called from install_addon().  
+
+    This function also checks if an addon is already present in the users profile.yml
+
+    """
     with open("profile.yml") as f:
         data = yaml.safe_load(f)
         installed_addons = data[1]["installed-addons"]
-        #TODO: Check for duplicates before adding the addon to profile.yml
         for addon in installed_addons[client]:
             for addon_dict in addon:
                 if addon_name in addon_dict.keys():
@@ -134,39 +148,38 @@ def add_addon_to_profile(client, addon_name,install_filename):
 
 
 
-
-''' 
-Description : Takes client version and url for addon to install , returns path where addon was installed.Installs zip file url references to the directory where the clients addon directory is located , or as shown in the profile.yml
-
-
-Arguments : 
-
-    client : 
-        Type : <class 'str'>
-        Description: 
-    url : 
-        Type : <class 'str'>
-
-
-
-Returns: 
-    str:filename -> returns the filename of the addon downloaded 
-'''
 def install_addon(client,addon_name,url):
+
+    """ 
+    Description 
+    -----------
+
+    Takes client version and url for addon to install , returns path where addon was installed.Installs zip file url references to the directory where the clients addon directory is located , or as shown in the profile.yml
+
+
+    Parameters 
+    -----------
+
+        client : str
+        url : str
+
+    Returns
+    -----------
+    str 
+    """
 
     sc = Scraper()
     filename = url.rsplit('/', 1)[-1]
     with open("profile.yml") as f:
         data = yaml.safe_load(f)
         addon_dir = data[0]["install-directories"]
-        # Checks if the addon_dir[client] directory string is a real path
+
         if os.path.exists(addon_dir[client]): 
-            logger.debug('linux detected')
             install_filename = os.path.join(addon_dir[client], filename)
             headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0.'}
             sc.get_zip(install_filename,url)
 
-            # Verify addon was actually installed 
+
             if os.path.isfile(install_filename):
                 logger.debug(f"Addon successfully installed to : {install_filename}")
    
@@ -175,26 +188,27 @@ def install_addon(client,addon_name,url):
                 return install_filename
 
 
-''' 
-Description: returns the URL of a zipfile for the searched addon
 
-Arguments:
-
-    addon_name : 
-        Type : <class 'str'> 
-        Description : String of the name of the addon to install 
-
-    client : 
-        Type : <class 'str'> 
-        Description : String containing the name of the client to install the addon for , currently only : 'vanilla' , 'tbc', 'turtle', 'wotlk', 'epoch' is supported
-
-    Returns : 
-
-        Returns string of a URL to a zip file , this string will should be passed to install_addon(client, url) with the string name of the client given and the url to download the file from
-
-        if 0 is returned the search failed 
-'''
 def get_legacy_wow_addons(addon_name, client):
+
+    """
+    Description
+    ------------
+
+    returns the URL of a zipfile for the searched addon
+
+    Parameters
+    -----------
+
+    addon_name : str
+    client : str
+
+    Returns 
+    -----------
+
+    str or int
+
+    """
 
     url = f"https://legacy-wow.com/uploads/addons/{client}/{addon_name[0].lower()}"
     logger.debug(f'URL: {url}')
@@ -208,34 +222,30 @@ def get_legacy_wow_addons(addon_name, client):
     except IndexError as e: 
         return 0
 
-
-'''
-
-Adds world of warcraft client folder to profile.yml
-
-Arguments : 
-
-    client : 
-
-        Type : <class 'str'>
-
-        Description: String containing client version , for example "vanilla" for 1.12. HAS to match the string for the client in profile.yml.
-
-    client_path : 
-
-        Type : <class 'str'>
-
-        Description : String that represents the clients installation directory, note that this is NOT the location of the addons, just the client directory itself
-Returns : 
-
-    int : 0 or 1 , 1 if completed successfully
-
-'''
 def add_client_to_profile(client, client_path):
+
+    """
+
+    Description
+    -----------
+    Adds world of warcraft client folder to profile.yml
+
+    Parameters  
+    -----------
+
+    client : str
+    client_path : str
+    
+    Returns 
+    -----------
+
+    int : 1 if completed successfully
+    """
+
 
     with open("profile.yml") as f: 
         profile = yaml.safe_load(f)
-        data = profile['install-directories']
+        data = profile[0]['install-directories']
         # Check if client version is valid
         if client in [*data]:
             if os.path.exists(client_path):
@@ -247,48 +257,26 @@ def add_client_to_profile(client, client_path):
     with open("profile.yml", "w") as f:
         yaml.dump(profile, f, default_flow_style=False)
 
-
-
-'''
-Description : Clears all directories out of the profile.yml file
-
-'''
-def reset_profile():
-
-    with open('profile.yml') as f:
-
-        profile = yaml.safe_load(f)
-        install_directories = profile['install-directories']
-
-        for x in install_directories.keys():
-            install_directories[x] = ""
-
-    with open('profile.yml', 'w') as f:
-
-        yaml.dump(profile, f, default_flow_style=False)
-
-'''
-
-Description : Function that returns the description listed on the legacy-wow addons page for a specific addon. This function is meant to be use with the GUI when generating UI elements of available addons
-
-Arguments:
-    addon_name : 
-        Type : <class 'str'>
-    client:
-        Type : <class 'str'>
-
-
-Returns: 
-    <class 'tuple'> (text, url) 
-
-    text : Text description of the addon searched 
-    url : url of the image to be used 
-
-if 0 is returned this means no description was able to be fetched
-
-'''
-
 def get_addon_desc(addon_name, client):
+
+    """
+
+    Description
+    ---------
+    Function that returns the description listed on the legacy-wow addons page for a specific addon. This function is meant to be use with the GUI when generating UI elements of available addons
+
+    Parameters
+    ---------
+        addon_name : str
+        client: str
+
+
+    Returns 
+    --------
+    tuple or int if failed
+
+    """
+
 
     url = f'https://legacy-wow.com/{client}-addons/{addon_name}'
     sc = Scraper()
@@ -316,52 +304,49 @@ def get_addon_desc(addon_name, client):
     
 
 
-'''
-
-Function that pretty prints the contents of the profile.yml file 
-
-Input : 
-    None 
-
-OUTPUT : 
-    <class 'str'>
-
-'''
-
-
 def p_profile(profile='profile.yml'):
+     
+    """
+
+    Function that pretty prints the contents of the profile.yml file 
+
+    Input : 
+        None 
+
+    OUTPUT : 
+        <class 'str'>
+
+    """
+
     with open(profile) as f:
-        yam = yaml.safe_load(f)
-        print(pyaml.dump(yam))
-
-
-'''
-
-Function that returns a list of all installed addons
-
-Input:
-    None 
-
-Output :
-    <class 'list'>
-
-
-'''
+       yam = yaml.safe_load(f)
+       print(pyaml.dump(yam))
 
 
 def get_installed_addons():
 
+    """
+
+    Function that returns a list of all installed addons
+
+    Input:
+        None 
+
+    Output :
+        <class 'list'>
+
+    """
+
+
     # iterate through all installed clients in profile.yml
-     with open('profile.yml') as f:
-         yam = yaml.safe_load(f)
-         install_dir = yam['install-directories']
-
-
-         for x in install_dir.keys():
-             if install_dir[x] != "":
-                 if os.path.exists(install_dir[x]):
-                     # Search for installed addons in install_dir[x]
-                     installed_addon_paths = [x for x in glob(f'install_dir[x]')]
+    with open('profile.yml') as f:
+        yam = yaml.safe_load(f)
+        install_dir = yam[0]['install-directories']
+        for x in install_dir.keys():
+            if install_dir[x] != "":
+                if os.path.exists(install_dir[x]):
+                    # Search for installed addons in install_dir[x]
+                    installed_addon_paths = [x for x in glob(f'install_dir[x]')]
 
 
 

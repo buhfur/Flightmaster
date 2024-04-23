@@ -69,8 +69,12 @@ class AddonWidget(QtWidgets.QFrame):
                error = QtWidgets.QMessageBox.critical(self, "Error", "Unable to find searched addon")
            else:
                zip_filename = install_addon(self.client, self.addon_name_label.text(),download_url)
-               unzip_addon(zip_filename)
-               error = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
+               has_client = unzip_addon(zip_filename,self.client)
+               if not has_client:
+                   client_error = QtWidgets.QMessageBox.critical(self, "Error", f"Could not install. No client listed for {self.client} ")
+               else:
+
+                   download_success = QtWidgets.QMessageBox.information(self, "Success", "Addon downloaded successfully")
 
        else:
            error = QtWidgets.QMessageBox.critical(self, "Error", "Client is not set ! ")

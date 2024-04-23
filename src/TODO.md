@@ -200,11 +200,16 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 # [ ] - Documentation goals 
 
+[ ] - use sphinx or pydoc to generate the documentation for the project
 [ ] - refactor variable names to make sense
 [ ] - document each functions expected input and output in utils.py
 
 
 ---
+
+# Bugfix TODO 
+
+[ ] - App returns dialog saying there's no client installed while one is clearly listed in profile.yml
 
 # Frontend TODO 
 
@@ -236,9 +241,13 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - get intall button working for the searched addon on the addon widget
 
-[ ] - Check for duplicates when adding addon to profile in  
+[x] - rewrite add\_client\_to\_profile to use the new format of profile.yml
 
-[ ] - move documentation out of source files
+[x] - When a user clicks the "install" button , check that they have a client install location in the profile.yml
+
+[ ] - Show dialog  when the user  successfully adds a client to their profile
+
+[ ] - Check if addon is already installed  
 
 [ ] - Fix case sensitivity when searching for addons, for some reason "pfQuest" works while "pfquest" doesn't , for example.
 

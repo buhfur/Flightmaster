@@ -14,6 +14,7 @@ from utils import *
 from bs4 import BeautifulSoup
 
 
+
 # generates imitation file structure and returns map of paths and the xpac associated
 def generate_structure():
     parent_dir = os.path.join(tempfile.gettempdir(),"addons")
@@ -83,18 +84,8 @@ def test_get_legacy_addons(name):
     urls = get_legacy_wow_addons(name,"vanilla")
 
 def test_add_client_to_profile():
-    # Generate test directory 
-
-    t_path = pathlib.Path(f'{tempfile.gettempdir()}/something/AddOns')
-    t_path.mkdir(parents=True, exist_ok=True)
-
-    client = "vanilla"
-    add_client_to_profile(client, str(t_path))
-
-    with open("profile.yml") as f: 
-        profile = yaml.safe_load(f)
-        logger.debug(f'{profile}')
-
+    add_client_to_profile("vanilla","/tmp/addons/vanilla/Interface/AddOns")
+    p_profile()
 
 
 
@@ -150,5 +141,6 @@ def test_add_addon_to_profile():
     add_addon_to_profile("vanilla", "AtlasLoot")
 
 
-generate_structure() # always run this just for good measure when testing on linux 
-test_get_legacy_addons("pfquest")
+if __name__ == '__main__':
+    test_add_client_to_profile()
+
