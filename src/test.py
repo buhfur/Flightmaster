@@ -79,6 +79,7 @@ def test_install_addons():
     res = get_legacy_wow_addons(addon_name,client) # URL 
     logger.debug(res)
     install_filename = install_addon(client,addon_name, res)
+    logger.debug(f'TEST INSTALL_FILENAME : {install_filename}')
     add_addon_to_profile(client,addon_name, install_filename)
     
 

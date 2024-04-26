@@ -209,11 +209,11 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 # Bugfix TODO 
 
-[ ] - App returns dialog saying there's no client installed while one is clearly listed in profile.yml
+[x] - App returns dialog saying there's no client installed while one is clearly listed in profile.yml
 
-[ ] - Addon is still added to profile even when no suitable client is installed
+[x] - Addon is still added to profile even when no suitable client is installed
 
-[ ] - when attempting to install an addon that's already installed,  there's an error that triggers the "no client installed" error dialog.  I know the issue might lie somewhere in the add_addon_to_client function 
+[x] - when attempting to install an addon that's already installed,  there's an error that triggers the "no client installed" error dialog.  I know the issue might lie somewhere in the add_addon_to_client function 
 
 # Frontend TODO 
 
@@ -249,7 +249,7 @@ First objective is to get the "Adding clients" section of the ui done and over w
 
 [x] - When a user clicks the "install" button , check that they have a client install location in the profile.yml
 
-[ ] - Show dialog  when the user  successfully adds a client to their profile
+[x] - Show dialog  when the user  successfully adds a client to their profile
 
 [ ] - Check if addon is already installed  
 

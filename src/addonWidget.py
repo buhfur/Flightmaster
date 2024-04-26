@@ -68,9 +68,14 @@ class AddonWidget(QtWidgets.QFrame):
            if download_url == 0:
                error = QtWidgets.QMessageBox.critical(self, "Error", "Unable to find searched addon")
            else:
+               # TODO: Find out why this is returning zero for an already installed addon
                zip_filename = install_addon(self.client, self.addon_name_label.text(),download_url)
+               logger.debug(f'client: {self.client} \n addon label text {self.addon_name_label.text()}' )
+               if zip_filename == 0 :
+                   error = QtWidgets.QMessageBox.critical(self, "Error", "Addon is already installed")
+
                has_client = unzip_addon(zip_filename,self.client)
-               if not has_client:
+               if has_client == 0 :
                    client_error = QtWidgets.QMessageBox.critical(self, "Error", f"Could not install. No client listed for {self.client} ")
                else:
 

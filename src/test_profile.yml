@@ -1,13 +1,11 @@
 - install-directories:
     epoch: ''
-    tbc: /tmp/addons/tbc/Interface/AddOns
+    tbc: ''
     turtle: ''
-    vanilla: /tmp/addons/vanilla/Interface/AddOns
+    vanilla: ''
     wotlk: ''
 - installed-addons:
     tbc: []
     turtle: []
-    vanilla:
-    - AtlasLoot: /tmp/addons/vanilla/Interface/AddOns/AtlasLoot
-    - Bagnon: /tmp/addons/vanilla/Interface/AddOns/Bagnon
+    vanilla: []
     wotlk: []

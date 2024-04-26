@@ -132,27 +132,22 @@ def add_addon_to_profile(client, addon_name,install_filename):
 
     Takes the client , addon_name,  and install directory of the addon as input
 
+    Returns 
+    -----------
+
+    int : 0 if addons is already installed 
+
     """
-    installed = False
     with open("profile.yml") as f:
         data = yaml.safe_load(f)
         installed_addons = data[1]["installed-addons"]
-
-        for addon in installed_addons[client]:
-            case_dict = [key.lower() for key in addon.keys()] # Changes the keys in the dictionary to lowercase
-            logger.debug(f'DICT:  {case_dict}')
-            if addon_name.lower() in case_dict:
-                installed=True
-                logger.debug('addon already present, skipping')
-            else:
-                installed_addons[client].append( { addon_name: str(pathlib.PurePath(install_filename).with_suffix(""))})
+        logger.debug(f'installed_addons : {installed_addons}')
+        installed_addons[client].append( { addon_name: str(pathlib.PurePath(install_filename).with_suffix(""))})
 
 
-
-    if not installed:
-        with open("profile.yml",'w') as f:
-            yaml.dump(data, f, default_flow_style=False)
-            logger.debug("WIN: added addon to clients profile")
+    with open("profile.yml",'w') as f:
+        yaml.dump(data, f, default_flow_style=False)
+        logger.debug("WIN: added addon to clients profile")
 
 
 
@@ -174,6 +169,7 @@ def install_addon(client,addon_name,url):
     Returns
     -----------
     str  : filename of the zipfile with path
+    int : if the addon cannot be installed , returns 0 and show dialog 
     """
 
     sc = Scraper()
@@ -187,13 +183,19 @@ def install_addon(client,addon_name,url):
             headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:110.0) Gecko/20100101 Firefox/110.0.'}
             sc.get_zip(install_filename,url)
 
-
             if os.path.isfile(install_filename):
-                logger.debug(f"Addon successfully installed to : {install_filename}")
-   
-    
-                add_addon_to_profile(client,addon_name,install_filename)
-                return install_filename
+                logger.debug(f"Adding addon to profile ")
+                # TODO : find out why the addon isn't being added to the installed-addons section in profile.yml
+                is_installed = add_addon_to_profile(client,addon_name,install_filename)
+                if is_installed == 0 :
+                    return 0
+                else:
+                    return install_filename
+
+            else:
+                logger.debug('install_filename is not a valid file ')
+        else:
+            logger.debug('path doesnt exist')
 
 
 
@@ -231,6 +233,7 @@ def get_legacy_wow_addons(addon_name, client):
         return 0
 
 def add_client_to_profile(client, client_path):
+    logger.debug(f'client: {client}\nclient_path: {client_path}')
 
     """
 
@@ -262,8 +265,8 @@ def add_client_to_profile(client, client_path):
                 if pathlib.PurePath(p_path).match("Interface"):
                     data[client] = client_path
 
-    with open("profile.yml", "w") as f:
-        yaml.dump(profile, f, default_flow_style=False)
+    with open("profile.yml", "w") as g:
+        yaml.dump(profile, g, default_flow_style=False)
 
 def get_addon_desc(addon_name, client):
 
