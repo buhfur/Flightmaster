@@ -2,11 +2,10 @@
     epoch: ''
     tbc: ''
     turtle: ''
-    vanilla: /tmp/addons/vanilla/Interface/AddOns
+    vanilla: ''
     wotlk: ''
 - installed-addons:
     tbc: []
     turtle: []
-    vanilla:
-    - AtlasLoot: /tmp/addons/vanilla/Interface/AddOns/AtlasLoot
+    vanilla: []
     wotlk: []
